@@ -2,15 +2,48 @@
 <html>
   <head>
     <title>MuchMatchCars</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+    <header class="border-bottom">
+      <nav class="navbar navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/top"><%= image_tag 'logo.jpg', size: "150x100" %></a>
+          <ul class="navbar-nav ml-auto flex-row">
+            <% if user_signed_in? %>
+              <li class="nav-item px-2 mx-2 rounded border">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li class="nav-item px-2 mx-2 rounded border">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+            <% else %>
+              <li class="nav-item px-2 mx-2 rounded border">
+                <%= link_to "about", homes_about_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item px-2 mx-2 rounded border">
+                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item px-2 mx-2 rounded border">
+                <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="mb-auto mt-3">
+      <%= yield %>
+    </main>
+    <footer>
+
+    </footer>
   </body>
 </html>
