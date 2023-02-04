@@ -14,7 +14,9 @@
     <header class="border-bottom">
       <nav class="navbar navbar-light">
         <div class="container">
-          <a class="navbar-brand" href="/top"><%= image_tag 'logo.jpg', size: "150x100" %></a>
+          <%= link_to homes_top_path do %>
+            <%= image_tag 'logo.jpg', size: "150x100" %></a>
+          <% end %>
           <ul class="navbar-nav ml-auto flex-row">
             <% if user_signed_in? %>
               <li class="nav-item px-2 mx-2 rounded border">

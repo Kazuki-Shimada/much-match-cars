@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'types/new'
+    get 'types/edit'
+    get 'types/index'
+  end
+  namespace :admin do
+    get 'user/show'
+    get 'user/index'
+  end
   namespace :public do
 
   end
@@ -17,13 +26,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :reviews, only: [:index, :edit, :destroy]
+    resources :users, only: [:index, :show]
   end
 
   scope module: :public do
     resources :reviews, only: [:new, :index, :edit, :create, :update, :destroy]
+    resources :users, only: [:show, :index, :edit] 
     get 'homes/about'
+    get 'homes/top'
   end
-  
-  
+
+
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
