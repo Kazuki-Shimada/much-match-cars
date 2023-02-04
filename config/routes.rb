@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'types/new'
-    get 'types/edit'
-    get 'types/index'
-  end
-  namespace :admin do
-    get 'user/show'
-    get 'user/index'
-  end
-  namespace :public do
-
-  end
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions:      'admin/sessions',
     passwords:     'admin/passwords'
@@ -27,11 +15,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :reviews, only: [:index, :edit, :destroy]
     resources :users, only: [:index, :show]
+    resources :types, only: [:new, :edit, :index, :create, :update, :destroy]
   end
 
   scope module: :public do
     resources :reviews, only: [:new, :index, :edit, :create, :update, :destroy]
-    resources :users, only: [:show, :index, :edit] 
+    resources :users, only: [:show, :index, :edit]
     get 'homes/about'
     get 'homes/top'
   end

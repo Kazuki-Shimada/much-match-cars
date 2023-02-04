@@ -1,2 +1,6 @@
-<h1>Admin::Types#new</h1>
-<p>Find me in app/views/admin/types/new.html.erb</p>
+<h2 class="mx-5 mt-3">新規車種登録</h2>
+<div class="container text-center">
+  <%= form_with model: @type, url: admin_types_path, method: :post do |f| %>
+    <%= f.text_field :name %>
+  <% end %>
+</div>
