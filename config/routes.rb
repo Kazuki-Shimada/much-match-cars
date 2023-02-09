@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :edit, :destroy]
     resources :users, only: [:index, :show]
     resources :types, only: [:new, :edit, :index, :create, :update, :destroy]
+    resources :manufacturers, only: [:index, :edit, :create, :destroy]
+    resources :models, only: [:index, :new, :edit, :create, :destroy]
   end
 
   scope module: :public do

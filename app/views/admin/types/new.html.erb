@@ -1,6 +1,37 @@
 <h2 class="mx-5 mt-3">新規車種登録</h2>
 <div class="container text-center">
   <%= form_with model: @type, url: admin_types_path, method: :post do |f| %>
-    <%= f.text_field :name %>
+    <table class="table">
+      <tr>
+        <th>メーカー</th>
+        <td><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th>車種</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>タイプ</th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>最大乗用人数</th>
+        <td><%= f.text_field :capacity %></td>
+      </tr>
+      <tr>
+        <th>排気量</th>
+        <td><%= f.text_field :displacement %></td>
+      </tr>
+      <tr>
+        <th>販売ステータス</th>
+        <td>
+          <%= f.radio_button :is_selling, "true" %>
+          <%= f.label :is_selling_true, "販売中" %>
+          <%= f.radio_button :is_selling, "false" %>
+          <%= f.label :is_selling_false, "販売停止中" %>
+        </td>
+      </tr>
+    </table>
+    <%= link_to "メーカー登録", admin_manufacturers_path, class: "btn btn-success" %>
   <% end %>
 </div>
