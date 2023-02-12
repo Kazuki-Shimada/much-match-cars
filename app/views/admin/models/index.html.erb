@@ -1,2 +1,30 @@
-<h1>Admin::Models#index</h1>
-<p>Find me in app/views/admin/models/index.html.erb</p>
+<h2 class="mx-5 mt-5">車種一覧</h2>
+<div class="container text-center">
+  <%= form_with model: @model, url: admin_models_path do |f| %>
+    <table class="table table-borderless mt-5">
+      <tr>
+        <th>車種追加</th>
+        <th><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), class: "form-control"%></th>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+    </table>
+    <%= f.submit "追加", class: "btn btn-success" %>
+  <% end %>
+  <h2></h2>
+
+  <table class="table table-borderless mt-5">
+    <% @models.each do |model| %>
+      <tr>
+        <th><%= model.manufacturer.name %></th>
+        <th><%= model.name %></th>
+        <td>
+          <%= link_to "編集", edit_admin_model_path(model), class: "btn btn-success" %>
+          <%= link_to "削除", admin_model_path(model.id), method: :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -17,7 +17,13 @@ class Admin::TypesController < ApplicationController
       render :new
     end
   end
-
+  def selected
+    if params[:manufacturer_id]
+      @models = Model.where(manufacturer_id: params[:manufacturer_id])
+      render :model
+    end
+    
+  end
   private
   def type_params
     params.require(:type).permit(:model_id, :name, :capacity, :displacement, :is_selling)

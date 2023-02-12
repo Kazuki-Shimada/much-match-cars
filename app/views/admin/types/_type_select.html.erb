@@ -1,0 +1,8 @@
+<select id="type_mode_id" name="type[mode_id]">
+<option value=""></option>
+<% models.each do | model | %>
+<option value="<%=model.id %>">
+  <%= model.name %>
+  </option>
+<% end %>
+</select>

@@ -1,18 +1,18 @@
-<h2 class="mx-5 mt-3">新規車種登録</h2>
+<h2 class="mx-5 mt-3">新規タイプ登録</h2>
 <div class="container text-center">
   <%= form_with model: @type, url: admin_types_path, method: :post do |f| %>
     <table class="table">
       <tr>
         <th>メーカー</th>
-        <td><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), class: "form-control" %></td>
+        <td><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), include_blank: true, class: "form-control" %></td>
       </tr>
       <tr>
         <th>車種</th>
-        <td></td>
+        <td id="type_model" style="display:none"><%= f.select :model_id, options_from_collection_for_select(Model.all, :id, :name), class: "form-control" %></td>
       </tr>
       <tr>
         <th>タイプ</th>
-        <td><%= f.text_field :name %></td>
+        <td id="type" style="display:none"><<%= f.text_field :name %></td>
       </tr>
       <tr>
         <th>最大乗用人数</th>
@@ -33,5 +33,27 @@
       </tr>
     </table>
     <%= link_to "メーカー登録", admin_manufacturers_path, class: "btn btn-success" %>
+    <%= link_to "車種登録", admin_models_path, class: "btn btn-success" %>
   <% end %>
 </div>
+<script>
+document.getElementById('type_manufacturer_id').addEventListener('change',function(e){
+  console.log(e.target.value)
+  if ( e.target.value == ''){
+    document.getElementById('type_model').style.display="none";
+    document.getElementById('type').style.display="none";
+  }
+  else{
+    console.log($('#type_model'));
+    $.ajax({
+      url: '/admin/types/selected',
+      type: "GET",
+      data: {
+        manufacturer_id: e.target.value,
+      },
+      dataType: 'script'
+     });
+
+  }
+});
+</script>

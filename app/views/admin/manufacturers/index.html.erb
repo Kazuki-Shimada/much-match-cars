@@ -16,8 +16,8 @@
       <tr>
         <th><%= manufacturer.name %></th>
         <td>
-          <%= link_to "編集", edit_admin_manufacturer_path(manufacturer), class: "btn btn-success" %>
-          <%=link_to "削除", admin_manufacturer_path(manufacturer.id), method: :delete, class: "btn btn-danger" %>
+          <%= link_to "編集", edit_admin_manufacturer_path(manufacturer.id), class: "btn btn-success" %>
+          <%= link_to "削除", admin_manufacturer_path(manufacturer.id), method: :delete, class: "btn btn-danger" %>
         </td>
       </tr>
     <% end %>
