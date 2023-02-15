@@ -12,7 +12,19 @@
       </tr>
       <tr>
         <th>タイプ</th>
-        <td id="type" style="display:none"><<%= f.text_field :name %></td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>価格</th>
+        <td><%= f.text_field :price %></td>
+      </tr>
+      <tr>
+        <th>燃料</th>
+        <td><%= f.text_field :fuel %></td>
+      </tr>
+      <tr>
+        <th>燃費</th>
+        <td><%= f.text_field :fuel_consumption %></td>
       </tr>
       <tr>
         <th>最大乗用人数</th>
@@ -31,9 +43,15 @@
           <%= f.label :is_selling_false, "販売停止中" %>
         </td>
       </tr>
+      <tr>
+        <td colspan="2">
+          <%= f.submit "追加", class: "btn btn-success" %>
+        </td>
+      </tr>
+
     </table>
-    <%= link_to "メーカー登録", admin_manufacturers_path, class: "btn btn-success" %>
-    <%= link_to "車種登録", admin_models_path, class: "btn btn-success" %>
+    <%= link_to "メーカー登録", admin_manufacturers_path, class: "btn btn-primary" %>
+    <%= link_to "車種登録", admin_models_path, class: "btn btn-primary" %>
   <% end %>
 </div>
 <script>
@@ -41,7 +59,6 @@ document.getElementById('type_manufacturer_id').addEventListener('change',functi
   console.log(e.target.value)
   if ( e.target.value == ''){
     document.getElementById('type_model').style.display="none";
-    document.getElementById('type').style.display="none";
   }
   else{
     console.log($('#type_model'));

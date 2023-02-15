@@ -1,2 +1,28 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<h2 class="mx-5 mt-5">プロフィール編集</h2>
+<div class="container text-center">
+  <%= form_with model: @user, url: user_path, method: :patch do |f| %>
+    <table class="table">
+      <tr>
+        <th>ユーザーネーム</th>
+        <td><%= f.text_field :name, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th>プロフィール画像</th>
+        <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= f.email_field :email, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th>自己紹介</th>
+        <td><%= f.text_area :introduct, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th colspan="2">
+          <%= f.submit "確定", class: "btn btn-success" %>
+        </th>
+      </tr>
+    </table>
+  <% end %>
+</div>

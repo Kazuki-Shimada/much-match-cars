@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :edit, :destroy]
     resources :users, only: [:index, :show]
     resources :types, only: [:new, :edit, :index, :create, :update, :destroy] do
-      collection do 
+      collection do
         get 'selected'
       end
     end
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :reviews, only: [:new, :index, :edit, :create, :update, :destroy]
-    resources :users, only: [:show, :index, :edit]
+    resources :users, only: [:show, :index, :edit,:update]
     get 'homes/about'
     get 'homes/top'
   end

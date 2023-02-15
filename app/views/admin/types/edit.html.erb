@@ -1,2 +1,76 @@
-<h1>Admin::Types#edit</h1>
-<p>Find me in app/views/admin/types/edit.html.erb</p>
+<h2 class="mx-5 mt-3">タイプ編集</h2>
+<div class="container text-center">
+  <%= form_with model: @type, url: admin_type_path, method: :patch do |f| %>
+    <table class="table">
+      <tr>
+        <th>メーカー</th>
+        <td><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), include_blank: true, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th>車種</th>
+        <td id="type_model" style="display:none"><%= f.select :model_id, options_from_collection_for_select(Model.all, :id, :name), class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th>タイプ</th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>価格</th>
+        <td><%= f.text_field :price %></td>
+      </tr>
+      <tr>
+        <th>燃料</th>
+        <td><%= f.text_field :fuel %></td>
+      </tr>
+      <tr>
+        <th>燃費</th>
+        <td><%= f.text_field :fuel_consumption %></td>
+      </tr>
+      <tr>
+        <th>最大乗用人数</th>
+        <td><%= f.text_field :capacity %></td>
+      </tr>
+      <tr>
+        <th>排気量</th>
+        <td><%= f.text_field :displacement %></td>
+      </tr>
+      <tr>
+        <th>販売ステータス</th>
+        <td>
+          <%= f.radio_button :is_selling, "true" %>
+          <%= f.label :is_selling_true, "販売中" %>
+          <%= f.radio_button :is_selling, "false" %>
+          <%= f.label :is_selling_false, "販売停止中" %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <%= f.submit "変更確定", class: "btn btn-success" %>
+        </td>
+      </tr>
+
+    </table>
+    <%= link_to "メーカー登録", admin_manufacturers_path, class: "btn btn-primary" %>
+    <%= link_to "車種登録", admin_models_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
+<script>
+document.getElementById('type_manufacturer_id').addEventListener('change',function(e){
+  console.log(e.target.value)
+  if ( e.target.value == ''){
+    document.getElementById('type_model').style.display="none";
+  }
+  else{
+    console.log($('#type_model'));
+    $.ajax({
+      url: '/admin/types/selected',
+      type: "GET",
+      data: {
+        manufacturer_id: e.target.value,
+      },
+      dataType: 'script'
+     });
+
+  }
+});
+</script>
