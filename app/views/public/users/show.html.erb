@@ -1,6 +1,7 @@
 <h1 class="mx-5 mt-5"><%= @user.name %>のプロフィール</h1>
 <div class="container text-center">
-  <% if user_signed_in?%>
+  <%= @user.get_profile_image(100,100) %>
+  <% if user_signed_in? %>
     <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success" %>
   <% end %>
 </div>

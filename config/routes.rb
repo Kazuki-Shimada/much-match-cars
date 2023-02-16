@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :reviews, only: [:new, :index, :edit, :create, :update, :destroy]
-    resources :users, only: [:show, :index, :edit,:update]
+    resources :users, only: [:show, :index, :edit, :update]
     get 'homes/about'
     get 'homes/top'
   end
