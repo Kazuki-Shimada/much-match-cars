@@ -1,6 +1,8 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @cars = Car.all
+    @count = 0
   end
 
   def index

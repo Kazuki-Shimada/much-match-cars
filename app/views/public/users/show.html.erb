@@ -1,7 +1,30 @@
 <h1 class="mx-5 mt-5"><%= @user.name %>のプロフィール</h1>
 <div class="container text-center">
-  <%= @user.get_profile_image(100,100) %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag @user.get_profile_image(200,200) %>
+    </div>
+    <div class="col-md-8 border">
+      <%= @user.introduct %>
+    </div>
+  </div>
+  <div class="row my-5">
+    <table class="table">
+      <% @cars.each do |car| %>
+        <% @count += 1 %>
+        <tr>
+          <th>My car No.<%= @count %></th>
+          <td>
+            <%= link_to car_path(car) do %>
+              <%= car.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
   <% if user_signed_in? %>
+    <%= link_to "My Car登録", new_car_path, class: "btn btn-success" %>
     <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success" %>
   <% end %>
 </div>
