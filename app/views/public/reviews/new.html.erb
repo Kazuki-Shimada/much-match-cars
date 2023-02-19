@@ -1,2 +1,26 @@
-<h1>Public::Reviews#new</h1>
-<p>Find me in app/views/public/reviews/new.html.erb</p>
+<h2 class="mx-5 mt-5">レビュー投稿</h2>
+<div class="container text-center">
+  <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
+    <div class="form-group">
+      <%= f.label :comment %>
+      <%= f.text_area :comment, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "投稿する", class: 'btn btn-success' %>
+    </div>
+    <div class="form-group row" id="star">
+      <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+      <%= f.hidden_field :star, id: :review_star %>
+  　　　　</div>
+    <script>
+  　$('#star').empty();
+    $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+   　　scoreName: 'review[star]',
+      half: false,
+    });
+    </script>
+  <% end %>
+</div>

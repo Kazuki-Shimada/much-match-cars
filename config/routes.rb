@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :reviews, only: [:index, :edit, :destroy]
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :show, :update]
     resources :types, only: [:new, :edit, :index, :create, :update, :destroy] do
       collection do
         get 'selected'
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    get 'users/confirm' => 'users#confirm'
+    patch 'users/withdrawal' => 'users#withdrawal'
     resources :reviews, only: [:new, :index, :edit, :create, :update, :destroy]
     resources :users, only: [:show, :index, :edit, :update]
     resources :cars, only: [:new, :show, :edit, :create, :update, :destroy]

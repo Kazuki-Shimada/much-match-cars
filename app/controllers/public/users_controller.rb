@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @cars = Car.all
+    @cars = Car.where(user_id: @user.id)
     @count = 0
   end
 
@@ -12,6 +12,8 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  def confirm
+  end
   def update
     user = User.find(params[:id])
     if user.update(user_params)
@@ -20,7 +22,12 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-
+  def withdrawal
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
   private
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduct)
