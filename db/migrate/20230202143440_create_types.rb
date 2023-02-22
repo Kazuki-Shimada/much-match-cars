@@ -1,7 +1,7 @@
 class CreateTypes < ActiveRecord::Migration[6.1]
   def change
     create_table :types do |t|
-      t.integer :model_id
+      t.integer :model_id, null: false
       t.string :name, null: false
       t.integer :price
       t.integer :capacity

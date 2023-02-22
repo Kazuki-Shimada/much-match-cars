@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
 
       t.timestamps null: false
-      t.string :name
+      t.string :name, null: false
       t.string :introduct
       t.boolean :is_deleted, default: false
     end

@@ -1,3 +1,26 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
-<%= link_to "レビュー投稿", new_review_path %>
+<h2 class="mx-5 mt-3">トップページ</h2>
+  <div class="container text-center">
+    <table class="table mt-5">
+      <tr>
+        <th>ユーザー</th>
+        <th>車種・タイプ</th>
+        <th>評価</th>
+        <th>コメント</th>
+      </tr>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <%= link_to user_path(review.user) do %>
+              <%= review.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= review.type.model.name %>・<%= review.type.name %>
+          </td>
+          <td><%= review.star %></td>
+          <td><%= review.comment %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to "レビューする", new_review_path, class: "btn btn-primary" %>
+  </div>
