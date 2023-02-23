@@ -6,8 +6,8 @@ class Admin::ReviewsController < ApplicationController
   def edit
   end
   def destroy
-    review = Review.find(params[:id])
-    if review.destroy
+    @review = Review.find(params[:id])
+    if @review.destroy
       redirect_to admin_reviews_path
     else
       render :index

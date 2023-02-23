@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :index, :edit, :create, :update, :destroy]
     resources :users, only: [:show, :index, :edit, :update]
     resources :cars, only: [:new, :show, :edit, :create, :update, :destroy]
+    resources :goods, only: [:create, :destroy]
     get 'homes/about'
     get 'homes/top'
   end
