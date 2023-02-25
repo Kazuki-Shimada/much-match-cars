@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_19_090629) do
+ActiveRecord::Schema.define(version: 2023_02_25_143349) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -89,6 +89,21 @@ ActiveRecord::Schema.define(version: 2023_02_19_090629) do
     t.string "star"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "type_tags", force: :cascade do |t|
+    t.integer "type_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_type_tags_on_tag_id"
+    t.index ["type_id"], name: "index_type_tags_on_type_id"
+  end
+
   create_table "types", force: :cascade do |t|
     t.integer "model_id"
     t.string "name", null: false
@@ -119,4 +134,6 @@ ActiveRecord::Schema.define(version: 2023_02_19_090629) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "type_tags", "tags"
+  add_foreign_key "type_tags", "types"
 end

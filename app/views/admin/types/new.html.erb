@@ -44,6 +44,16 @@
         </td>
       </tr>
       <tr>
+        <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <div class='form-check'>
+         　 <%= tag.label do %>
+          　  <%= tag.check_box %>
+          　  <%= tag.text %>
+          　<% end %>
+          </div>
+        <% end %>
+      </tr>
+      <tr>
         <td colspan="2">
           <%= f.submit "追加", class: "btn btn-success" %>
         </td>

@@ -23,10 +23,11 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdrawal' => 'users#withdrawal'
-    resources :reviews, only: [:new, :index, :edit, :create, :update, :destroy]
+    resources :reviews, only: [:new, :index, :edit, :create, :update, :destroy] do
+      resource :goods, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :index, :edit, :update]
     resources :cars, only: [:new, :show, :edit, :create, :update, :destroy]
-    resources :goods, only: [:create, :destroy]
     get 'homes/about'
     get 'homes/top'
   end
