@@ -36,7 +36,7 @@ class Admin::TypesController < ApplicationController
   end
   private
   def type_params
-    params.require(:type).permit(:model_id, :name, :price, :fuel, :fuel_consumption, :capacity, :displacement, :is_selling, :type_image, tag_ids: [])
+    params.require(:type).permit(:model_id, :name, :price, :fuel, :fuel_consumption, :capacity, :displacement, :is_selling, :type_image)
   end
 
 end

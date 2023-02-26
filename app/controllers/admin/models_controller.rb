@@ -1,7 +1,8 @@
 class Admin::ModelsController < ApplicationController
   def index
-    @models = Model.all
+    @models = params[:name].present? ? Tag.find(params[:name]).models : Model.all
     @model = Model.new
+    @tags = Tag.all
   end
 
   def edit
@@ -22,9 +23,9 @@ class Admin::ModelsController < ApplicationController
       render :index
     end
   end
-  
+
   private
   def model_params
-    params.require(:model).permit(:manufacturer_id, :name, :model_image)
+    params.require(:model).permit(:manufacturer_id, :name, :model_image, tag_ids: [])
   end
 end

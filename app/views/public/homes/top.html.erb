@@ -1,39 +1,43 @@
 <h2 class="mx-5 mt-3">トップページ</h2>
   <div class="container text-center">
-    
-    <table class="table mt-5">
-      <tr>
-        <th>ユーザー</th>
-        <th>車種・タイプ</th>
-        <th>評価</th>
-        <th>コメント</th>
-        <th></th>
-      </tr>
-      <% @reviews.each do |review| %>
+
+      <table class="table mt-5">
         <tr>
-          <td>
-            <%= link_to user_path(review.user) do %>
-              <%= review.user.name %>
-            <% end %>
-          </td>
-          <td>
-            <%= review.type.model.name %>・<%= review.type.name %>
-          </td>
-          <td><%= review.star %></td>
-          <td><%= review.comment %></td>
-          <td>
-            <% if review.gooded_by?(current_user) %>
-              <%= link_to review_goods_path(review), method: :delete do %>
-                💛<%= review.goods.count %>
-              <% end %>いいね
-            <% else %>
-              <%= link_to review_goods_path(review), method: :post do %>
-                ♡<%= review.goods.count %>
-              <% end %>いいね
-            <% end %>
-          </td>
+          <th>ユーザー</th>
+          <th>車種・タイプ</th>
+          <th>評価</th>
+          <th>コメント</th>
+          <th></th>
         </tr>
-      <% end %>
-    </table>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td>
+              <%= link_to user_path(review.user) do %>
+                <%= review.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= review.type.model.name %>・<%= review.type.name %>
+            </td>
+            <td><%= review.star %></td>
+            <td><%= review.comment %></td>
+            <td>
+              <% if user_signed_in? %>
+                <% if review.gooded_by?(current_user) %>
+                  <%= link_to review_goods_path(review), method: :delete do %>
+                    🤍<%= review.goods.count %>
+                  <% end %>いいね
+                <% else %>
+                  <%= link_to review_goods_path(review), method: :post do %>
+                    ♡<%= review.goods.count %>
+                  <% end %>いいね
+                <% end %>
+              <% else %>
+                ♡<%= review.goods.count %>いいね
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     <%= link_to "レビューする", new_review_path, class: "btn btn-primary" %>
   </div>

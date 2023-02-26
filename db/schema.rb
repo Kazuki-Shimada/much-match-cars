@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_25_143349) do
+ActiveRecord::Schema.define(version: 2023_02_26_101911) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,16 +53,16 @@ ActiveRecord::Schema.define(version: 2023_02_25_143349) do
   end
 
   create_table "cars", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "type_id"
+    t.integer "user_id", null: false
+    t.integer "type_id", null: false
     t.integer "model_year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "goods", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "review_id"
+    t.integer "user_id", null: false
+    t.integer "review_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -73,20 +73,29 @@ ActiveRecord::Schema.define(version: 2023_02_25_143349) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "model_tags", force: :cascade do |t|
+    t.integer "model_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["model_id"], name: "index_model_tags_on_model_id"
+    t.index ["tag_id"], name: "index_model_tags_on_tag_id"
+  end
+
   create_table "models", force: :cascade do |t|
-    t.integer "manufacturer_id"
+    t.integer "manufacturer_id", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "type_id"
-    t.string "comment"
+    t.integer "user_id", null: false
+    t.integer "type_id", null: false
+    t.string "comment", null: false
+    t.float "rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "star"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -95,17 +104,8 @@ ActiveRecord::Schema.define(version: 2023_02_25_143349) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "type_tags", force: :cascade do |t|
-    t.integer "type_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["tag_id"], name: "index_type_tags_on_tag_id"
-    t.index ["type_id"], name: "index_type_tags_on_type_id"
-  end
-
   create_table "types", force: :cascade do |t|
-    t.integer "model_id"
+    t.integer "model_id", null: false
     t.string "name", null: false
     t.integer "price"
     t.integer "capacity"
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2023_02_25_143349) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
+    t.string "name", null: false
     t.string "introduct"
     t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -134,6 +134,6 @@ ActiveRecord::Schema.define(version: 2023_02_25_143349) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "type_tags", "tags"
-  add_foreign_key "type_tags", "types"
+  add_foreign_key "model_tags", "models"
+  add_foreign_key "model_tags", "tags"
 end

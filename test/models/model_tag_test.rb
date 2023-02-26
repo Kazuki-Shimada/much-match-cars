@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TypeTagTest < ActiveSupport::TestCase
+class ModelTagTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

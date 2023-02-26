@@ -11,13 +11,13 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :reviews, only: [:index, :edit, :destroy]
     resources :users, only: [:index, :show, :update]
+    resources :manufacturers, only: [:index, :edit, :create, :destroy]
+    resources :models, only: [:index, :edit, :create, :destroy]
     resources :types, only: [:new, :edit, :index, :create, :update, :destroy] do
       collection do
         get 'selected'
       end
     end
-    resources :manufacturers, only: [:index, :edit, :create, :destroy]
-    resources :models, only: [:index, :edit, :create, :destroy]
   end
 
   scope module: :public do

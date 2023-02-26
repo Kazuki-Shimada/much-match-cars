@@ -4,32 +4,59 @@
     <table class="table table-borderless mt-5">
       <tr>
         <th>車種追加</th>
-        <th><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), class: "form-control"%></th>
+        <th><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), include_blank: true, class: "form-control" %></th>
       </tr>
       <tr>
-        <th></th>
+        <th>車種名</th>
         <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>タグ</th>
+        <td class="row">
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <div class='form-check'>
+            <%= tag.label do %>
+            　<%= tag.check_box %>
+            　<%= tag.text %>
+            <% end %>
+          </div>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td colspan="2">
           <%= f.submit "追加", class: "btn btn-success" %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
           <%= link_to "タイプ登録", new_admin_type_path, class: "btn btn-primary mx-3" %>
         </td>
       </tr>
     </table>
   <% end %>
-  <h2></h2>
-
-  <table class="table table-borderless mt-5">
-    <% @models.each do |model| %>
-      <tr>
-        <th><%= model.manufacturer.name %></th>
-        <th><%= model.name %></th>
-        <td>
-          <%= link_to "編集", edit_admin_model_path(model), class: "btn btn-success" %>
-          <%= link_to "削除", admin_model_path(model.id), method: :delete, class: "btn btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+  <%= form_tag admin_models_path, method: :get, class: 'boards__searchForm' do %>
+    <div class="row">
+      <% @tags.each do |tag| %>
+        <div class="border p-3 m-1">
+          <%= link_to tag.name, admin_models_path(name: tag.id) %>
+        </div>
+      <% end %>
+      <div class="border p-3 m-1">
+        <%= link_to "全ての車種", admin_models_path %>
+      </div>
+    </div>
+    <table class="table table-borderless mt-5">
+      <% @models.each do |model| %>
+        <tr>
+          <th><%= model.manufacturer.name %></th>
+          <th><%= model.name %></th>
+          <td>
+            <%= link_to "編集", edit_admin_model_path(model), class: "btn btn-success" %>
+            <%= link_to "削除", admin_model_path(model.id), method: :delete, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>
