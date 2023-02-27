@@ -1,8 +1,10 @@
 class Public::CommentsController < ApplicationController
   def create
-    comment = Comment.new
+    comment = Comment.new(comment_params)
     comment.user_id = current_user.id
-    comment.save!
+    review = Review.find(params[:review_id])
+    comment.review_id = review.id
+    comment.save
     redirect_to root_path
   end
 

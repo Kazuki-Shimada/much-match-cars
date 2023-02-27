@@ -15,7 +15,7 @@
   </table>
   <div class="border-top pt-3">
     <h4>コメントする</h4>
-    <%= form_with model: @comment, url: comments_path, method: :post do |f| %>
+    <%= form_with model: @comment, url: review_comments_path(@review.id), method: :post do |f| %>
       <%= f.text_area :body %></br>
       <%= f.submit "投稿する", class: "btn btn-success" %>
     <% end %>
