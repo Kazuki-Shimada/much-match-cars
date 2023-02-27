@@ -6,7 +6,7 @@
           <th>ユーザー</th>
           <th>車種・タイプ</th>
           <th>評価</th>
-          <th>コメント</th>
+          <th>タイトル</th>
           <th></th>
         </tr>
         <% @reviews.each do |review| %>
@@ -19,8 +19,12 @@
             <td>
               <%= review.type.model.name %>・<%= review.type.name %>
             </td>
-            <td><%= review.star %></td>
-            <td><%= review.comment %></td>
+            <td><%= review.rate %></td>
+            <td>
+              <%= link_to review_path(review) do %>
+                <%= review.title %>
+              <% end %>
+            </td>
             <td>
               <% if user_signed_in? %>
                 <% if review.gooded_by?(current_user) %>

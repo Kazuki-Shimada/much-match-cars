@@ -1,0 +1,28 @@
+<h2 class="mx-5 mt-3">レビュー詳細</h2>
+<div class="container text-center">
+  <table class="table">
+    <tr>
+      <th>タイトル</th>
+      <td><%= @review.title %></td>
+    </tr>
+    <tr>
+      <th>本文</th>
+      <td><%= @review.body %></td>
+    </tr>
+    <tr>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+  <div class="border-top pt-3">
+    <h4>コメントする</h4>
+    <%= form_with model: @comment, url: comments_path, method: :post do |f| %>
+      <%= f.text_area :body %></br>
+      <%= f.submit "投稿する", class: "btn btn-success" %>
+    <% end %>
+  </div>
+  <div>
+    <% @review.comments.each do |comment| %>
+      <%= comment.body %>
+    <% end %>
+  </div>
+</div>

@@ -1,7 +1,7 @@
-<h2 class="mx-5 mt-5">レビュー投稿</h2>
+<h2 class="mx-5 mt-3">レビュー投稿</h2>
 <div class="container text-center">
-  <%= form_with model: @review, local:true, url: reviews_path, method: :post do |f| %>
-    <table class="table my-5">
+  <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
+    <table class="table">
       <tr>
         <th>メーカー</th>
         <td><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), include_blank: true, class: "form-control" %></td>
@@ -14,16 +14,25 @@
         <th>タイプ</th>
         <td><%= f.select :type_id, options_from_collection_for_select(Type.all, :id, :name), include_blank: true, class: "form-control" %></td>
       </tr>
+      <tr>
+        <th>評価</th>
+        <td>
+          <%= f.select :rate, *[1..10], include_blank: true, class: "form_control" %>
+        </td>
+      </tr>
+      <tr>
+        <th>タイトル</th>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <th>本文</th>
+        <td><%= f.text_area :body %></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <%= f.submit "投稿する", class: "btn btn-success" %>
+        </td>
+      </tr>
     </table>
-      <div class="form_area my-5">
-      <h5>評価</h5>
-        <%= f.select :star, *[1..10], include_blank: true,　class: 'form-control' %>
-      </div>
-      <div class="form_area my-5">
-        <h5>コメント</h5>
-        <%= f.text_area :comment, class: "form-control"%>
-      </div>
-      <%= f.submit "投稿する", class: 'btn btn-success' %>
   <% end %>
 </div>
-

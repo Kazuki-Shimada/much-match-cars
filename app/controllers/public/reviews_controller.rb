@@ -2,10 +2,10 @@ class Public::ReviewsController < ApplicationController
   def new
     @review = Review.new
   end
-
-  def index
-  end
-  def edit
+  def show
+    @review = Review.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.all
   end
   def create
     review = Review.new(review_params)
@@ -18,7 +18,6 @@ class Public::ReviewsController < ApplicationController
   end
   private
   def review_params
-    params.require(:review).permit(:user_id, :type_id, :star, :comment)
+    params.require(:review).permit(:user_id, :type_id, :rate, :title, :body)
   end
-
 end
