@@ -9,9 +9,6 @@
       <th>本文</th>
       <td><%= @review.body %></td>
     </tr>
-    <tr>
-      <td colspan="2"></td>
-    </tr>
   </table>
   <div class="border-top pt-3">
     <h4>コメントする</h4>
@@ -21,8 +18,17 @@
     <% end %>
   </div>
   <div>
-    <% @review.comments.each do |comment| %>
-      <%= comment.body %>
-    <% end %>
+    <table class="table">
+      <tr>
+        <th>user</th>
+        <th>コメント</th>
+      </tr>
+      <% @review.comments.each do |comment| %>
+        <tr>
+          <th><%= comment.user.name %></th>
+          <th><%= comment.body %></th>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>

@@ -29,10 +29,12 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:show, :index, :edit, :update]
     resources :cars, only: [:new, :show, :edit, :create, :update, :destroy]
+    get "search" => "searches#search"
     get 'homes/about'
     get 'homes/top'
   end
-
+  
+  
   root to: "public/homes#top"
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -11,51 +11,54 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="border-bottom">
+    <header class="border-bottom shadow-sm">
       <nav class="navbar navbar-light">
         <div class="container">
           <%= link_to homes_top_path do %>
             <%= image_tag 'logo.jpg', size: "150x100" %></a>
           <% end %>
+          <% if user_signed_in? %>
           <ul class="navbar-nav ml-auto flex-row">
-            <% if user_signed_in? %>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "トップ", homes_top_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link' %>
-              </li>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "ユーザー一覧", users_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
-              </li>
-            <% elsif admin_signed_in? %>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "タイプ一覧", admin_types_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "投稿一覧", admin_reviews_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
-              </li>
-            <% else %>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "about", homes_about_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item px-2 mx-2 rounded border">
-                <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
-              </li>
-            <% end %>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "トップ", homes_top_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link' %>
+            </li>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "ユーザー一覧", users_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
           </ul>
+          <ul class="navbar-nav ml-auto flex-row">
+            <li><%= render 'public/searches/search' %></li>
+          </ul>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "タイプ一覧", admin_types_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "投稿一覧", admin_reviews_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "about", homes_about_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item px-2 mx-2 rounded border">
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
+            </li>
+          <% end %>
         </div>
       </nav>
     </header>

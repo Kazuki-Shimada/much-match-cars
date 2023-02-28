@@ -1,0 +1,42 @@
+<h2 class="mx-5 mt-3">検索結果</h2>
+<div class="container text-center">
+  <table class="table table-hover table-inverse">
+    <% if @range == "ユーザー" %>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% elsif @range == "メーカー" %>
+      <tbody>
+        <tr>
+          <th>メーカー</th>
+          <th>車種</th>
+        </tr>
+        <% @manufacturers.each do |manufacturer| %>
+          <% manufacturer.models.each do |model| %>
+            <tr>
+              <td><%= model.manufacturer.name %></td>
+              <td><%= model.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    <% else %>
+      <tbody>
+        <tr>
+          <th>メーカー</th>
+          <th>車種</th>
+        </tr>
+        <% @models.each do |model| %>
+          <tr>
+            <td><%= model.manufacturer.name %></td>
+            <td><%= model.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</div>
