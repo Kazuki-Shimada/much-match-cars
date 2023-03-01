@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'types/show'
+  end
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions:      'admin/sessions',
   }
@@ -29,12 +32,13 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:show, :index, :edit, :update]
     resources :cars, only: [:new, :show, :edit, :create, :update, :destroy]
+    resources :models, only: [:show]
     get "search" => "searches#search"
     get 'homes/about'
     get 'homes/top'
   end
-  
-  
+
+
   root to: "public/homes#top"
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
