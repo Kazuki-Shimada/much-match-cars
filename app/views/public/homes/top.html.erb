@@ -41,6 +41,8 @@
         <%= link_to review_path(review) do %>
           <%= review.comments.count %>コメント
         <% end %>
+        <p>投稿日：</br>
+        <%= l review.created_at %></p>
       </div>
     </div>
   </div>

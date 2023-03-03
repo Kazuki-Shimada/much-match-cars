@@ -15,17 +15,12 @@
       <tr>
         <td><%= @type.model.manufacturer.name %></td>
         <td><%= @type.model.name %></td>
-        <td>
-          <%= link_to edit_admin_type_path(type) do %>
-            <%= type.name %>
-          <% end %>
-        </td>
+        <th><%= @type.name %></th>
+        <th><%= @type.capacity %></th>
+        <th><%= @type.displacement %></th>
+        <th><%= @type.fuel_consumption %></th>
+        <th><%= @type.fuel %></th>
+        <th><%= @type.is_selling %></th>
       </tr>
-    <% end %>
-    <tr>
-      <th colspan="3">
-        <%= link_to "タイプ登録", new_admin_type_path, class: "btn btn-primary" %>
-      </th>
-    </tr>
   </table>
 </div>

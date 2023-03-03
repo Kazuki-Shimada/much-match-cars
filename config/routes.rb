@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index, :edit, :update]
     resources :cars, only: [:new, :show, :edit, :create, :update, :destroy]
     resources :models, only: [:show]
+    resources :types, only: [:show]
     get "search" => "searches#search"
     get 'homes/about'
     get 'homes/top'
