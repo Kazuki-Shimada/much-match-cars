@@ -15,9 +15,39 @@
         <td><%= f.select :type_id, options_from_collection_for_select(Type.all, :id, :name), include_blank: true, class: "form-control" %></td>
       </tr>
       <tr>
-        <th>評価</th>
+        <th>デザイン</th>
         <td>
-          <%= f.select :rate, *[1..10], include_blank: true, class: "form_control" %>
+          <%= f.select :design, *[1..5], include_blank: true, class: "form_control" %>
+        </td>
+      </tr>
+      <tr>
+        <th>運転性能</th>
+        <td>
+          <%= f.select :driving_performance, *[1..5], include_blank: true, class: "form_control" %>
+        </td>
+      </tr>
+      <tr>
+        <th>価格</th>
+        <td>
+          <%= f.select :cost, *[1..5], include_blank: true, class: "form_control" %>
+        </td>
+      </tr>
+      <tr>
+        <th>広さ</th>
+        <td>
+          <%= f.select :size, *[1..5], include_blank: true, class: "form_control" %>
+        </td>
+      </tr>
+      <tr>
+        <th>安全性能</th>
+        <td>
+          <%= f.select :safety, *[1..5], include_blank: true, class: "form_control" %>
+        </td>
+      </tr>
+      <tr>
+        <th>総評価</th>
+        <td>
+          <%= f.select :rate, *[1..5], include_blank: true, class: "form_control" %>
         </td>
       </tr>
       <tr>
