@@ -1,4 +1,12 @@
 <h2 class="mx-5 mt-3">レビュー投稿</h2>
+<% if @review.errors.any? %>
+  <%= @review.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div class="container text-center">
   <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
     <table class="table">

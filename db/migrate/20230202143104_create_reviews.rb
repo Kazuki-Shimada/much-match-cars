@@ -10,7 +10,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.integer :driving_performance, null: false
       t.integer :cost, null: false
       t.integer :size, null: false
-      t.integer :safety, null: false
+      t.integer :safety, nyll: false
       t.timestamps
     end
   end

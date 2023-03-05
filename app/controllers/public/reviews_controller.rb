@@ -8,9 +8,9 @@ class Public::ReviewsController < ApplicationController
     @comments = Comment.all
   end
   def create
-    review = Review.new(review_params)
-    review.user_id = current_user.id
-    if review.save
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
+    if @review.save
       redirect_to root_path
     else
       render :new

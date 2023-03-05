@@ -5,6 +5,9 @@ class Model < ApplicationRecord
   has_many :model_tags, dependent: :destroy
   has_many :tags, through: :model_tags, dependent: :destroy
 
+  validates :name, presence: true
+  validates :manufacturer_id, presence: true
+
   def get_model_image(width, height)
     unless model_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

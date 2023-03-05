@@ -26,6 +26,6 @@ class Admin::ModelsController < ApplicationController
 
   private
   def model_params
-    params.require(:model).permit(:manufacturer_id, :name, :model_image, tag_ids: [])
+    params.require(:model).permit(:manufacturer_id, :name, :model_image, :price, tag_ids: [])
   end
 end

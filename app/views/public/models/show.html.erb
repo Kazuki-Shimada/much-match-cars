@@ -1,9 +1,16 @@
 <h2 class="mx-5 mt-3"><%= @model.manufacturer.name %>/<%= @model.name %></h2>
 <div class="container text-center">
-  <%= image_tag @model.get_model_image %>
-  <% @model.types.each do |type| %>
-    <%= link_to type_path(type) do %>
-      <%= type.name %>
-    <% end %>
+  <%= image_tag @model.get_model_image(200,200) %>
+  <table class="table">
+    <% @model.types.each do |type| %>
+    <tr>
+      <th>
+        <%= link_to type_path(type) do %>
+          <%= type.name %>
+        <% end %>
+      </th>
+    </tr>
   <% end %>
+  </table>
+
 </div>

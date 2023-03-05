@@ -17,6 +17,10 @@
         </td>
       </tr>
       <tr>
+        <th>価格</th>
+        <td><%= f.text_field :price %></td>
+      </tr>
+      <tr>
         <th>タグ</th>
         <td class="row">
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>

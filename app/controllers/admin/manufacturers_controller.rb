@@ -8,8 +8,8 @@ class Admin::ManufacturersController < ApplicationController
   end
 
   def create
-    manufacturer = Manufacturer.new(manufacturer_params)
-    if manufacturer.save
+    @manufacturer = Manufacturer.new(manufacturer_params)
+    if @manufacturer.save
       redirect_to admin_manufacturers_path
     else
       render :index
