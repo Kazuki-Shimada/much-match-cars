@@ -7,6 +7,14 @@
     <% end %>
   </ul>
 <% end %>
+<% if @manufacturer.errors.any? %>
+  <%= @manufacturer.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @manufacturer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div class="container text-center">
   <%= form_with model: @manufacturer, url: admin_manufacturers_path do |f| %>
     <table class="table table-borderless mt-5">

@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2023_02_26_151759) do
 
   create_table "models", force: :cascade do |t|
     t.integer "manufacturer_id", null: false
+    t.string "price"
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -107,7 +108,7 @@ ActiveRecord::Schema.define(version: 2023_02_26_151759) do
     t.integer "driving_performance", null: false
     t.integer "cost", null: false
     t.integer "size", null: false
-    t.integer "safety", null: false
+    t.integer "safety"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

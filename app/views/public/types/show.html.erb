@@ -12,27 +12,27 @@
     </tr>
     <tr>
       <th>タイプ</th>
-      <th><%= @type.name %></th>
+      <td><%= @type.name %></td>
     </tr>
     <tr>
       <th>最大乗用人数</th>
-      <th><%= @type.capacity %></th>
+      <td><%= @type.capacity %>人</td>
     </tr>
     <tr>
       <th>排気量</th>
-      <th><%= @type.displacement %></th>
+      <td><%= @type.displacement %>cc</td>
     </tr>
     <tr>
       <th>燃費</th>
-      <th><%= @type.fuel_consumption %></th>
+      <td><%= @type.fuel_consumption %>km/l</td>
     </tr>
     <tr>
       <th>燃料</th>
-      <th><%= @type.fuel %></th>
+      <td><%= @type.fuel %></td>
     </tr>
     <tr>
       <th>販売ステータス</th>
-      <th><%= @type.is_selling %></th>
+      <td><%= @type.is_selling ? '販売中' : '販売停止中' %></td>
     </tr>
   </table>
   <h2>総合評価</h2>

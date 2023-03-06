@@ -1,10 +1,12 @@
 class Admin::ManufacturersController < ApplicationController
+  before_action :is_admin, only: [:index, :edit]
   def index
     @manufacturer = Manufacturer.new
     @manufacturers = Manufacturer.all
   end
 
   def edit
+    @manufacturer = Manufacturer.find(params[:id])
   end
 
   def create
@@ -27,5 +29,10 @@ class Admin::ManufacturersController < ApplicationController
 
   def manufacturer_params
     params.require(:manufacturer).permit(:name)
+  end
+  def is_admin
+    unless admin_signed_in?
+      redirect_to root_path
+    end
   end
 end

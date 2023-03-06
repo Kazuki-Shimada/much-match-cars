@@ -3,14 +3,14 @@
   <%= image_tag @model.get_model_image(200,200) %>
   <table class="table">
     <% @model.types.each do |type| %>
-    <tr>
-      <th>
-        <%= link_to type_path(type) do %>
-          <%= type.name %>
-        <% end %>
-      </th>
-    </tr>
-  <% end %>
+      <tr>
+        <th>
+          <%= link_to type_path(type) do %>
+            <%= type.name %>
+          <% end %>
+        </th>
+      </tr>
+    <% end %>
   </table>
 
 </div>

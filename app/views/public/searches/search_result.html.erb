@@ -13,15 +13,15 @@
       <tbody>
         <tr>
           <th>メーカー</th>
-          <th>車種</th>
         </tr>
         <% @manufacturers.each do |manufacturer| %>
-          <% manufacturer.models.each do |model| %>
-            <tr>
-              <td><%= model.manufacturer.name %></td>
-              <td><%= model.name %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td>
+              <%= link_to manufacturer_path(manufacturer) do %>
+                <%= manufacturer.name %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     <% else %>

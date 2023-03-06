@@ -1,4 +1,12 @@
 <h2 class="mx-5 mt-5">車種一覧</h2>
+<% if @model.errors.any? %>
+  <%= @model.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @model.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div class="container text-center">
   <%= form_with model: @model, url: admin_models_path do |f| %>
     <table class="table table-borderless mt-5">

@@ -1,4 +1,5 @@
 class Admin::TypesController < ApplicationController
+  before_action :is_admin, only: [:new, :edit, :index]
   def new
     @type = Type.new
   end
@@ -12,8 +13,8 @@ class Admin::TypesController < ApplicationController
   end
 
   def create
-    type = Type.new(type_params)
-    if type.save
+    @type = Type.new(type_params)
+    if @type.save
       redirect_to admin_types_path
     else
       render :new
@@ -37,6 +38,11 @@ class Admin::TypesController < ApplicationController
   private
   def type_params
     params.require(:type).permit(:model_id, :name, :price, :fuel, :fuel_consumption, :capacity, :displacement, :is_selling, :type_image)
+  end
+  def is_admin
+    unless admin_signed_in?
+      redirect_to root_path
+    end
   end
 
 end

@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'types/show'
-  end
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions:      'admin/sessions',
   }
@@ -10,7 +7,7 @@ Rails.application.routes.draw do
     sessions:      'public/sessions',
     registrations: 'public/registrations'
   }
-
+  
   namespace :admin do
     resources :reviews, only: [:index, :edit, :destroy]
     resources :users, only: [:index, :show, :update]
@@ -34,6 +31,7 @@ Rails.application.routes.draw do
     resources :cars, only: [:new, :show, :edit, :create, :update, :destroy]
     resources :models, only: [:show]
     resources :types, only: [:show]
+    resources :manufacturers, only: [:show]
     get "search" => "searches#search"
     get 'homes/about'
     get 'homes/top'
