@@ -8,58 +8,57 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Carter+One&family=Noto+Serif+Japanese">
 
+  </head>
   <body class="d-flex flex-column vh-100">
-    <header class="border-bottom shadow-sm">
+    <header class="border-bottom shadow-sm bg-danger">
       <nav class="navbar navbar-light">
-        <div class="container">
+        <div class="container my-3">
           <%= link_to homes_top_path do %>
-            <%= image_tag 'logo.jpg', size: "150x100" %></a>
+            <h1 class="text-white site-name">Much Match Cars</h1>
           <% end %>
           <% if user_signed_in? %>
           <ul class="navbar-nav ml-auto flex-row">
-            <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "トップ", homes_top_path, class: 'nav-link' %>
+            <li class="nav-item px-4 mx-2 rounded border btn btn-danger">
+              <%= link_to "トップ", homes_top_path, class: 'nav-link text-white' %>
             </li>
-            <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link' %>
+            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+              <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-white' %>
             </li>
-            <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "ユーザー一覧", users_path, class: 'nav-link' %>
+            <li class="nav-item px-2 mx-2 rounded border btn btn-danger">
+              <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-white' %>
             </li>
-            <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
             </li>
-          </ul>
-          <ul class="navbar-nav ml-auto flex-row">
-            <li><%= render 'public/searches/search' %></li>
           </ul>
           <% elsif admin_signed_in? %>
-          <ul class="navbar-nav ml-auto flex-row">
+          <ul class="navbar-nav ml-auto flex-row text-white">
             <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "タイプ一覧", admin_types_path, class: 'nav-link' %>
+              <%= link_to "タイプ一覧", admin_types_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link' %>
+              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "投稿一覧", admin_reviews_path, class: 'nav-link' %>
+              <%= link_to "投稿一覧", admin_reviews_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %>
             </li>
           </ul>
           <% else %>
           <ul class="navbar-nav ml-auto flex-row">
             <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "about", homes_about_path, class: 'nav-link' %>
+              <%= link_to "about", homes_about_path, class: 'nav-link text-white text-white' %>
             </li>
             <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item px-2 mx-2 rounded border">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white' %>
             </li>
           </ul>
           <% end %>
@@ -67,6 +66,9 @@
       </nav>
     </header>
     <main class="mb-auto mt-3">
+      <% if user_signed_in? %>
+        <%= render 'public/searches/search' %>
+      <% end %>
       <%= yield %>
     </main>
     <footer>
