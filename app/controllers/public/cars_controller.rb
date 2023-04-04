@@ -1,13 +1,12 @@
 class Public::CarsController < ApplicationController
-  def show
-  end
 
+  def edit
+    @car = Car.find(params[:id])
+  end
   def new
     @car = Car.new
   end
 
-  def edit
-  end
   def create
     car = Car.new(car_params)
     car.user_id = current_user.id
@@ -23,6 +22,14 @@ class Public::CarsController < ApplicationController
       redirect_to user_path(current_user)
     else
       render :new
+    end
+  end
+  def update
+    car = Car.find(params[:id])
+    if car.update(car_params)
+      redirect_to user_path(car.user)
+    else
+      render :edit
     end
   end
 

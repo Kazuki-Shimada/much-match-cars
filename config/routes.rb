@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     sessions:      'public/sessions',
     registrations: 'public/registrations'
   }
-  
+
   namespace :admin do
-    resources :reviews, only: [:index, :edit, :destroy]
+    resources :reviews, only: [:index, :destroy]
     resources :users, only: [:index, :show, :update]
     resources :manufacturers, only: [:index, :edit, :create, :destroy]
     resources :models, only: [:index, :edit, :create, :destroy]
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create]
     end
     resources :users, only: [:show, :index, :edit, :update]
-    resources :cars, only: [:new, :show, :edit, :create, :update, :destroy]
+    resources :cars, only: [:new, :edit, :create, :update, :destroy]
     resources :models, only: [:show]
     resources :types, only: [:show]
     resources :manufacturers, only: [:show]

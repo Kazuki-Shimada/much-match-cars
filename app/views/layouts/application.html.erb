@@ -36,28 +36,28 @@
           </ul>
           <% elsif admin_signed_in? %>
           <ul class="navbar-nav ml-auto flex-row text-white">
-            <li class="nav-item px-2 mx-2 rounded border">
+            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
               <%= link_to "タイプ一覧", admin_types_path, class: 'nav-link text-white' %>
             </li>
-            <li class="nav-item px-2 mx-2 rounded border">
+            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
               <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-white' %>
             </li>
-            <li class="nav-item px-2 mx-2 rounded border">
+            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
               <%= link_to "投稿一覧", admin_reviews_path, class: 'nav-link text-white' %>
             </li>
-            <li class="nav-item px-2 mx-2 rounded border">
+            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %>
             </li>
           </ul>
           <% else %>
           <ul class="navbar-nav ml-auto flex-row">
-            <li class="nav-item px-2 mx-2 rounded border">
+            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
               <%= link_to "about", homes_about_path, class: 'nav-link text-white text-white' %>
             </li>
-            <li class="nav-item px-2 mx-2 rounded border">
+            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
               <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white' %>
             </li>
-            <li class="nav-item px-2 mx-2 rounded border">
+            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
               <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white' %>
             </li>
           </ul>
@@ -71,8 +71,10 @@
       <% end %>
       <%= yield %>
     </main>
-    <footer>
-
+    <footer class="mt-5">
+      <div class="text-center py-5 text-white bg-secondary">
+        ©︎Kazuki Sakaue
+      </div>
     </footer>
   </body>
 </html>

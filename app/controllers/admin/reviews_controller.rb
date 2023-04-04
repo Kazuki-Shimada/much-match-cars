@@ -4,8 +4,6 @@ class Admin::ReviewsController < ApplicationController
     @reviews = Review.page(params[:page]).per(10)
   end
 
-  def edit
-  end
   def destroy
     @review = Review.find(params[:id])
     if @review.destroy

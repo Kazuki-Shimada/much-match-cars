@@ -25,6 +25,7 @@ class Admin::ManufacturersController < ApplicationController
       render :index
     end
   end
+
   private
 
   def manufacturer_params
