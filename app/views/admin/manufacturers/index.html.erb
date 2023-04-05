@@ -25,7 +25,9 @@
       </tr>
       <tr>
         <td colspan="3">
-          <%= link_to "車種登録", admin_models_path, class: "btn btn-primary mx-3" %>
+          <%= link_to "メーカー登録", admin_manufacturers_path, class: "btn btn-primary active" %>
+          <%= link_to "車種登録", admin_models_path, class: "btn btn-primary" %>
+          <%= link_to "タイプ登録", new_admin_type_path, class: "btn btn-primary border" %>
         </td>
       </tr>
     </table>
@@ -36,7 +38,6 @@
       <tr>
         <th><%= manufacturer.name %></th>
         <td>
-          <%= link_to "編集", edit_admin_manufacturer_path(manufacturer.id), class: "btn btn-success" %>
           <%= link_to "削除", admin_manufacturer_path(manufacturer.id), method: :delete, class: "btn btn-danger" %>
         </td>
       </tr>

@@ -20,7 +20,7 @@
       </tr>
       <tr>
         <th>タイプ</th>
-        <td><%= f.text_field :name %></td>
+        <td id="type_type"><%= f.text_field :name %></td>
       </tr>
       <tr>
         <th>価格</th>
@@ -60,6 +60,7 @@
     </table>
     <%= link_to "メーカー登録", admin_manufacturers_path, class: "btn btn-primary" %>
     <%= link_to "車種登録", admin_models_path, class: "btn btn-primary" %>
+    <%= link_to "タイプ登録", new_admin_type_path, class: "btn btn-primary border active" %>
   <% end %>
 </div>
 <script>
@@ -81,4 +82,5 @@ document.getElementById('type_manufacturer_id').addEventListener('change',functi
 
   }
 });
+
 </script>

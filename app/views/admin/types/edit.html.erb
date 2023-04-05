@@ -5,34 +5,42 @@
       <tr>
         <th>メーカー</th>
         <td><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), include_blank: true, class: "form-control" %></td>
+        <td></td>
       </tr>
       <tr>
         <th>車種</th>
         <td id="type_model" style="display:none"><%= f.select :model_id, options_from_collection_for_select(Model.all, :id, :name), class: "form-control" %></td>
+        <td></td>
       </tr>
       <tr>
         <th>タイプ</th>
         <td><%= f.text_field :name %></td>
+        <td></td>
       </tr>
       <tr>
         <th>価格</th>
         <td><%= f.text_field :price %></td>
+        <td>円</td>
       </tr>
       <tr>
         <th>燃料</th>
         <td><%= f.text_field :fuel %></td>
+        <td></td>
       </tr>
       <tr>
         <th>燃費</th>
         <td><%= f.text_field :fuel_consumption %></td>
+        <td>km/L</td>
       </tr>
       <tr>
         <th>最大乗用人数</th>
         <td><%= f.text_field :capacity %></td>
+        <td>人</td>
       </tr>
       <tr>
         <th>排気量</th>
         <td><%= f.text_field :displacement %></td>
+        <td>mL</td>
       </tr>
       <tr>
         <th>販売ステータス</th>
@@ -42,15 +50,17 @@
           <%= f.radio_button :is_selling, "false" %>
           <%= f.label :is_selling_false, "販売停止中" %>
         </td>
+        <td></td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td colspan="3">
           <%= f.submit "変更確定", class: "btn btn-success" %>
         </td>
       </tr>
     </table>
     <%= link_to "メーカー登録", admin_manufacturers_path, class: "btn btn-primary" %>
     <%= link_to "車種登録", admin_models_path, class: "btn btn-primary" %>
+    <%= link_to "タイプ登録", new_admin_type_path, class: "btn btn-primary" %>
   <% end %>
 </div>
 <script>

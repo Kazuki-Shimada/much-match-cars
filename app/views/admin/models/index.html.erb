@@ -26,7 +26,7 @@
       </tr>
       <tr>
         <th>価格</th>
-        <td><%= f.text_field :price %></td>
+        <td><%= f.text_field :price %>円</td>
       </tr>
       <tr>
         <th>タグ</th>
@@ -48,7 +48,9 @@
       </tr>
       <tr>
         <td colspan="2">
-          <%= link_to "タイプ登録", new_admin_type_path, class: "btn btn-primary mx-3" %>
+          <%= link_to "メーカー登録", admin_manufacturers_path, class: "btn btn-primary" %>
+          <%= link_to "車種登録", admin_models_path, class: "btn btn-primary active" %>
+          <%= link_to "タイプ登録", new_admin_type_path, class: "btn btn-primary border" %>
         </td>
       </tr>
     </table>
@@ -71,7 +73,6 @@
           <th><%= model.manufacturer.name %></th>
           <th><%= model.name %></th>
           <td>
-            <%= link_to "編集", edit_admin_model_path(model), class: "btn btn-success" %>
             <%= link_to "削除", admin_model_path(model.id), method: :delete, class: "btn btn-danger" %>
           </td>
         </tr>
