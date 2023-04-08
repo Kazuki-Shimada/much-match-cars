@@ -16,11 +16,11 @@
       </tr>
       <tr>
         <th>車種</th>
-        <td><%= f.select :model_id, options_from_collection_for_select(Model.all, :id, :name), include_blank: true, class: "form-control" %></td>
+        <td id="type_model" style="display:none"><%= f.select :model_id, options_from_collection_for_select(Model.all, :id, :name), class: "form-control" %></td>
       </tr>
       <tr>
         <th>タイプ</th>
-        <td><%= f.select :type_id, options_from_collection_for_select(Type.all, :id, :name), include_blank: true, class: "form-control" %></td>
+        <td id="type_type"  style="display:none"><%= f.select :type_id, options_from_collection_for_select(Type.all, :id, :name), class: "form-control" %></td>
       </tr>
       <tr>
         <th>デザイン</th>
@@ -74,3 +74,40 @@
     </table>
   <% end %>
 </div>
+<script>
+document.getElementById('type_manufacturer_id').addEventListener('change',function(e){
+  console.log(e.target.value)
+  if ( e.target.value == ''){
+    document.getElementById('type_model').style.display="none";
+  }
+  else{
+    console.log($('#type_model'));
+    $.ajax({
+      url: '/public/reviews/selected',
+      type: "GET",
+      data: {
+        manufacturer_id: e.target.value,
+      },
+      dataType: 'script'
+     });
+  }
+});
+
+document.getElementById('type_model_id').addEventListener('change',function(e){
+  console.log(e.target.value)
+  if ( e.target.value == ''){
+    document.getElementById('type_type').style.display="none";
+  }
+  else{
+    console.log($('#type_model'));
+    $.ajax({
+      url: '/public/reviews/selected',
+      type: "GET",
+      data: {
+        model_id: e.target.value,
+      },
+      dataType: 'script'
+     });
+  }
+});
+</script>
