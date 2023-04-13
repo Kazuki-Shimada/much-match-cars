@@ -1,11 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-p {
+body {
   font-family: 'Noto Serif Japanese', serif;
+  background-color: #EEEEEE;
 }
 
 .site-name {
   font-family: 'Carter One', serif;
 }
-

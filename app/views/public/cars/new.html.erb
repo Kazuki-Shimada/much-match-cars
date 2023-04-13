@@ -8,11 +8,11 @@
       </tr>
       <tr>
         <th>車種</th>
-        <td><%= f.select :model_id, options_from_collection_for_select(Model.all, :id, :name), include_blank: true, class: "form-control" %></td>
+        <td id="car_type_model" style="display:none"><%= f.select :model_id, options_from_collection_for_select(Model.all, :id, :name), class: "form-control" %></td>
       </tr>
       <tr>
         <th>タイプ</th>
-        <td><%= f.select :type_id, options_from_collection_for_select(Type.all, :id, :name), include_blank: true, class: "form-control" %></td>
+        <td id="car_type_type"  style="display:none"><%= f.select :type_id, options_from_collection_for_select(Type.all, :id, :name), class: "form-control" %></td>
       </tr>
       <tr>
         <th>年式(西暦)</th>
@@ -30,3 +30,28 @@
     </table>
   <% end %>
 </div>
+<script>
+$(document).on('turbolinks:load', function () {
+
+document.getElementById('car_manufacturer_id').addEventListener('change',function(e){
+  console.log(e.target.value)
+  if ( e.target.value == ''){
+    document.getElementById('car_type_model').style.display="none";
+  }
+  else{
+    console.log($('#car_type_model'));
+    $.ajax({
+      url: '/types/selected',
+      type: "GET",
+      data: {
+        manufacturer_id: e.target.value,
+        page_type: 'car'
+      },
+      dataType: 'script'
+     });
+  }
+});
+
+
+});
+</script>

@@ -1,0 +1,28 @@
+<select id="car_model_id" name="car[model_id]">
+  <option value=""></option>
+  <% models.each do | model | %>
+    <option value="<%= model.id %>">
+      <%= model.name %>
+    </option>
+  <% end %>
+</select>
+<script>
+  document.getElementById('car_model_id').addEventListener('change',function(e){
+  console.log(e.target.value)
+  if ( e.target.value == ''){
+    document.getElementById('car_type_type').style.display="none";
+  }
+  else{
+    console.log($('#car_type_type'));
+    $.ajax({
+      url: '/types/selected',
+      type: "GET",
+      data: {
+        model_id: e.target.value,
+        page_type: 'car'
+      },
+      dataType: 'script'
+     });
+  }
+});
+</script>

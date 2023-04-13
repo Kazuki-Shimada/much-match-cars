@@ -3,6 +3,7 @@ class CreateCars < ActiveRecord::Migration[6.1]
     create_table :cars do |t|
       t.integer :user_id, null: false
       t.integer :type_id, null: false
+      t.integer :manufacturer_id
       t.integer :model_year
       t.timestamps
     end

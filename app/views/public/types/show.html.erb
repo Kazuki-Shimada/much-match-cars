@@ -1,101 +1,171 @@
-<h2 class="mx-5 mt-5">タイプ詳細</h2>
-<div class="container text-center">
-  <%= image_tag @type.model.get_model_image(200,200) %>
-  <table class="table mt-3">
-    <tr>
-      <th>メーカー</th>
-      <td><%= @type.model.manufacturer.name %></td>
-    </tr>
-    <tr>
-      <th>車種</th>
-      <td><%= @type.model.name %></td>
-    </tr>
-    <tr>
-      <th>タイプ</th>
-      <td><%= @type.name %></td>
-    </tr>
-    <tr>
-      <th>最大乗用人数</th>
-      <td><%= @type.capacity %>人</td>
-    </tr>
-    <tr>
-      <th>排気量</th>
-      <td><%= @type.displacement %>cc</td>
-    </tr>
-    <tr>
-      <th>燃費</th>
-      <td><%= @type.fuel_consumption %>km/l</td>
-    </tr>
-    <tr>
-      <th>燃料</th>
-      <td><%= @type.fuel %></td>
-    </tr>
-    <tr>
-      <th>販売ステータス</th>
-      <td><%= @type.is_selling ? '販売中' : '販売停止中' %></td>
-    </tr>
-  </table>
-  <h2>総合評価</h2>
-  <table class="table">
-    <tr>
-      <th>デザイン</th>
-      <td>
-        <% @type.reviews.each do |type| %>
-          <% @total += type.design %>
-        <% end %>
-        <%= @total / @type.reviews.count %>
-        <% @total = 0 %>
-      </td>
-    </tr>
-    <tr>
-      <th>運転性能</th>
-      <td>
-        <% @type.reviews.each do |type| %>
-          <% @total += type.driving_performance %>
-        <% end %>
-        <%= @total / @type.reviews.count %>
-        <% @total = 0 %>
-      </td>
-    </tr>
-    <tr>
-      <th>価格</th>
-      <td>
-        <% @type.reviews.each do |type| %>
-          <% @total += type.cost %>
-        <% end %>
-        <%= @total / @type.reviews.count %>
-        <% @total = 0 %>
-      </td>
-    </tr>
-    <tr>
-      <th>広さ</th>
-      <td>
-        <% @type.reviews.each do |type| %>
-          <% @total += type.size %>
-        <% end %>
-        <%= @total / @type.reviews.count %>
-        <% @total = 0 %>
-      </td>
-    </tr>
-    <tr>
-      <th>安全性能</th>
-      <td>
-        <% @type.reviews.each do |type| %>
-          <% @total += type.safety %>
-        <% end %>
-        <%= @total / @type.reviews.count %>
-        <% @total = 0 %>
-      </td>
-    </tr>
-    <tr>
-      <th>総合点</th>
-      <td>
-        <% @type.reviews.each do |type| %>
-          <% @total += type.rate %>
-        <% end %>
-        <%= @total / @type.reviews.count %>
-        <% @total = 0 %>
-      </td>
-    </tr>
-  </table>
+
+<div class="container-fluid mt-5">
+  <div class="row no-gutters">
+    <div class="col-4 p-2 bg-white">
+      <h3 style="margin:0;"><%= @type.model.name %></h3></br>
+      <h4 style="margin:0;"><%= @type.name %></h4></br>
+      <p style="margin:0;", class="text-secondary"><%= @type.model.manufacturer.name %></p></br>
+      <%= image_tag @type.model.get_model_image(200,200), class: "center-block" %></br>
+      <table class="table mt-4">
+        <tr>
+          <th>最大乗用人数</th>
+          <td><%= @type.capacity %>人</td>
+        </tr>
+        <tr>
+          <th>排気量</th>
+          <td><%= @type.displacement %>cc</td>
+        </tr>
+        <tr>
+          <th>燃費</th>
+          <td><%= @type.fuel_consumption %>km/l</td>
+        </tr>
+        <tr>
+          <th>燃料</th>
+          <td><%= @type.fuel %></td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td><%= @type.is_selling ? '販売中' : '販売停止中' %></td>
+        </tr>
+      </table>
+      <h2>総合評価</h2>
+      <p>評価件数 <%= @type.reviews.count %>件</p>
+      <table class="table">
+        <tr>
+          <th>デザイン</th>
+          <td>
+            <% @type.reviews.each do |type| %>
+              <% @total += type.design %>
+            <% end %>
+            <%= @total / @type.reviews.count %>
+            <% @total = 0 %>
+          </td>
+        </tr>
+        <tr>
+          <th>運転性能</th>
+          <td>
+            <% @type.reviews.each do |type| %>
+              <% @total += type.driving_performance %>
+            <% end %>
+            <%= @total / @type.reviews.count %>
+            <% @total = 0 %>
+          </td>
+        </tr>
+        <tr>
+          <th>価格</th>
+          <td>
+            <% @type.reviews.each do |type| %>
+              <% @total += type.cost %>
+            <% end %>
+            <%= @total / @type.reviews.count %>
+            <% @total = 0 %>
+          </td>
+        </tr>
+        <tr>
+          <th>広さ</th>
+          <td>
+            <% @type.reviews.each do |type| %>
+              <% @total += type.size %>
+            <% end %>
+            <%= @total / @type.reviews.count %>
+            <% @total = 0 %>
+          </td>
+        </tr>
+        <tr>
+          <th>安全性能</th>
+          <td>
+            <% @type.reviews.each do |type| %>
+              <% @total += type.safety %>
+            <% end %>
+            <%= @total / @type.reviews.count %>
+            <% @total = 0 %>
+          </td>
+        </tr>
+        <tr>
+          <th>総合点</th>
+          <td>
+            <% @type.reviews.each do |type| %>
+              <% @total += type.rate %>
+            <% end %>
+            <%= @total / @type.reviews.count %>
+            <% @total = 0 %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-8">
+      <% @reviews.each do |review| %>
+        <div class="card w-75 container my-5">
+          <div class="row no-gutters">
+            <div class="col-3 text-center pt-2">
+              <%= image_tag review.type.model.get_model_image(100,100), class: "card-img"  %>
+              <%= link_to user_path(review.user) do %>
+                <%= image_tag review.user.get_profile_image(80,80), class: "mt-3 rounded-circle" %>
+                <%= review.user.name %></br>
+              <% end %>
+              <% if user_signed_in? %>
+                <% if review.gooded_by?(current_user) %>
+                  <%= link_to review_goods_path(review), method: :delete do %>
+                    🤍<%= review.goods.count %>
+                  <% end %>いいね
+                <% else %>
+                  <%= link_to review_goods_path(review), method: :post do %>
+                    ♡<%= review.goods.count %>
+                  <% end %>いいね
+                <% end %>
+              <% else %>
+                ♡<%= review.goods.count %>いいね
+              <% end %></br>
+              <%= link_to review_path(review) do %>
+                <%= review.comments.count %>コメント
+              <% end %>
+            </div>
+            <div class="col-6">
+              <div class="card-body">
+
+                <h3>
+                  <%= review.type.model.manufacturer.name %></br>
+                  <%= link_to model_path(review.type.model) do %>
+                    <%= review.type.model.name %>
+                  <% end %>
+                </h3>
+                <%= review.type.name %></br>
+                <strong class="mt-2"><%= review.title %></strong></br>
+                <p class="mt-2"><%= l review.created_at %>に投稿</p></br>
+                <p><%= review.body %></p>
+              </div>
+            </div>
+            <div class="col-3">
+              <table class="table table-borderless">
+                <tr>
+                  <td>デザイン</td>
+                  <td> <%= review.design %>/5</td>
+                </tr>
+                <tr>
+                  <td>運転性能</td>
+                  <td><%= review.driving_performance %>/5</td>
+                </tr>
+                <tr>
+                  <td>価格</td>
+                  <td><%= review.cost %>/5</td>
+                </tr>
+                <tr>
+                  <td>広さ</td>
+                  <td><%= review.size %>/5</td>
+                </tr>
+                <tr>
+                  <td>安全性能</td>
+                  <td><%= review.safety %>/5</td>
+                </tr>
+                <tr>
+                  <th>総合点数</th>
+                  <th><%= review.rate %>/5</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+<% end %>
+    </div>
+  </div>
 </div>

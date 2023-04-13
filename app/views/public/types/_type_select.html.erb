@@ -1,0 +1,27 @@
+<select id="review_model_id" name="review[model_id]">
+  <option value=""></option>
+  <% models.each do | model | %>
+    <option value="<%= model.id %>">
+      <%= model.name %>
+    </option>
+  <% end %>
+</select>
+<script>
+  document.getElementById('review_model_id').addEventListener('change',function(e){
+  console.log(e.target.value)
+  if ( e.target.value == ''){
+    document.getElementById('type_type').style.display="none";
+  }
+  else{
+    console.log($('#type_type'));
+    $.ajax({
+      url: '/types/selected',
+      type: "GET",
+      data: {
+        model_id: e.target.value,
+      },
+      dataType: 'script'
+     });
+  }
+});
+</script>

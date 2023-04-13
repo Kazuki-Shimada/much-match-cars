@@ -75,7 +75,9 @@
   <% end %>
 </div>
 <script>
-document.getElementById('type_manufacturer_id').addEventListener('change',function(e){
+$(document).on('turbolinks:load', function () {
+
+document.getElementById('review_manufacturer_id').addEventListener('change',function(e){
   console.log(e.target.value)
   if ( e.target.value == ''){
     document.getElementById('type_model').style.display="none";
@@ -83,31 +85,17 @@ document.getElementById('type_manufacturer_id').addEventListener('change',functi
   else{
     console.log($('#type_model'));
     $.ajax({
-      url: '/public/reviews/selected',
+      url: '/types/selected',
       type: "GET",
       data: {
         manufacturer_id: e.target.value,
+        page_type: 'review'
       },
       dataType: 'script'
      });
   }
 });
 
-document.getElementById('type_model_id').addEventListener('change',function(e){
-  console.log(e.target.value)
-  if ( e.target.value == ''){
-    document.getElementById('type_type').style.display="none";
-  }
-  else{
-    console.log($('#type_model'));
-    $.ajax({
-      url: '/public/reviews/selected',
-      type: "GET",
-      data: {
-        model_id: e.target.value,
-      },
-      dataType: 'script'
-     });
-  }
+
 });
 </script>

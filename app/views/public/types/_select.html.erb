@@ -1,0 +1,8 @@
+<select id="review_type_id" name="review[type_id]">
+  <option value=""></option>
+  <% types.each do | type | %>
+    <option value="<%= type.id %>">
+      <%= type.name %>
+    </option>
+  <% end %>
+</select>
