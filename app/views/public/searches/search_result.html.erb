@@ -5,11 +5,17 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-              <td>
-                <%= link_to user_path(user) do %>
-                  <%= user.name %>
-                <% end %>
-              </td>
+            <td>
+              <%= image_tag user.get_profile_image(100,100) %>
+            </td>
+            <td>
+              <%= link_to user_path(user) do %>
+                <%= user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= user.introduct %>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -17,6 +23,7 @@
       <tbody>
         <tr>
           <th>メーカー</th>
+          <th>車種数</th>
         </tr>
         <% @manufacturers.each do |manufacturer| %>
           <tr>
@@ -25,19 +32,34 @@
                 <%= manufacturer.name %>
               <% end %>
             </td>
+            <td>
+              <%= link_to manufacturer_path(manufacturer) do %>
+                <%= manufacturer.models.count %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
     <% else %>
       <tbody>
         <tr>
+          <th></th>
           <th>メーカー</th>
           <th>車種</th>
         </tr>
         <% @models.each do |model| %>
           <tr>
-            <td><%= model.manufacturer.name %></td>
-            <td><%= model.name %></td>
+            <td><%= image_tag model.get_model_image(100,100) %></td>
+            <td>
+              <%= link_to manufacturer_path(model.manufacturer) do %>
+                <%= model.manufacturer.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to model_path(model) do %>
+                <%= model.name %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

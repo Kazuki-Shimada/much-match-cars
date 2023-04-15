@@ -9,7 +9,7 @@
           <%= review.user.name %></br>
         <% end %>
           ♡<%= review.goods.count %>いいね</br>
-        <%= link_to review_path(review) do %>
+        <%= link_to admin_review_path(review) do %>
           <%= review.comments.count %>コメント</br>
         <% end %>
         <%= link_to "削除", admin_review_path(review), method: :delete, class: "btn btn-danger" %>

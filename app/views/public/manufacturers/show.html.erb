@@ -1,10 +1,11 @@
-<h2 class="mx-5 mt-3"><%= @manufacturer.name %></h2>
+<h2 class="mx-5 mt-3"><%= @manufacturer.name %>の車種一覧</h2>
 <div class="container text-center">
   <table class="table">
     <% @manufacturer.models.each do |model| %>
       <tr>
         <th>
           <%= link_to model_path(model) do %>
+            <%= image_tag model.get_model_image(100,100) %>
             <%= model.name %>
           <% end %>
         </th>

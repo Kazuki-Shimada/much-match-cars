@@ -3,7 +3,11 @@ class Admin::ReviewsController < ApplicationController
   def index
     @reviews = Review.page(params[:page]).per(10)
   end
-
+  def show
+    @review = Review.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.all
+  end
   def destroy
     @review = Review.find(params[:id])
     if @review.destroy

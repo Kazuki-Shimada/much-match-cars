@@ -19,6 +19,7 @@
       <tr>
         <th></th>
         <td></td>
+        <td>メーカー</td>
         <td>車種</td>
         <td>タイプ</td>
         <td></td>
@@ -27,10 +28,19 @@
         <% @count += 1 %>
         <tr>
           <th>My car No.<%= @count %></th>
-          <td><%= image_tag car.get_car_image(200,200) %></td>
-          <td><%= car.type.model.name %></td>
+          <td><%= image_tag car.get_car_image(100,100) %></td>
           <td>
-            <%= link_to car_path(car) do %>
+            <%= link_to manufacturer_path(car.type.model.manufacturer) do %>
+              <%= car.type.model.manufacturer.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to model_path(car.type.model) do %>
+              <%= car.type.model.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to type_path(car.type) do %>
               <%= car.type.name %>
             <% end %>
           </td>

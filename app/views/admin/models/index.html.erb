@@ -11,7 +11,7 @@
   <%= form_with model: @model, url: admin_models_path do |f| %>
     <table class="table table-borderless mt-5">
       <tr>
-        <th>車種追加</th>
+        <th>メーカー</th>
         <th><%= f.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), include_blank: true, class: "form-control" %></th>
       </tr>
       <tr>

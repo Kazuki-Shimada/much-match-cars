@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :reviews, only: [:index, :destroy]
+    resources :reviews, only: [:index, :destroy, :show] do
+      resources :comments, only: [:destroy]
+    end
     resources :users, only: [:index, :show, :update]
     resources :manufacturers, only: [:index, :edit, :create, :destroy]
     resources :models, only: [:index, :edit, :create, :destroy]
