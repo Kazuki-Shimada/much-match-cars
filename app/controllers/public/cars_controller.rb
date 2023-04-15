@@ -10,6 +10,7 @@ class Public::CarsController < ApplicationController
   def create
     car = Car.new(car_params)
     car.user_id = current_user.id
+    car.type_id = params[:review][:type_id]
     if car.save
       redirect_to user_path(current_user)
     else
@@ -36,6 +37,6 @@ class Public::CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:user_id, :type_id, :model_year, :car_image, :manufacturer_id)
+    params.require(:car).permit(:user_id, :type_id, :model_year, :car_image, :manufacturer_id, :model_id)
   end
 end

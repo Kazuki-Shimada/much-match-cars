@@ -55,7 +55,9 @@ ActiveRecord::Schema.define(version: 2023_02_26_151759) do
   create_table "cars", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "type_id", null: false
+    t.integer "manufacturer_id"
     t.integer "model_year"
+    t.integer "model_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

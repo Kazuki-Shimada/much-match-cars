@@ -2,3 +2,7 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "えら-です"
