@@ -10,3 +10,13 @@ Tag.create([
   { name: '小型自動車' },
   { name: '普通自動車' },
   ])
+  
+admin = Admin.create!(
+  [
+    {email: 'shimakazu1209@gmail.com', password: 'Shimada1209'}
+  ]
+)
+user = User.create!(
+  [
+    {name: 'aaa', emial: 'aaa@aaa', password: 'aaaaaa'}
+    ])

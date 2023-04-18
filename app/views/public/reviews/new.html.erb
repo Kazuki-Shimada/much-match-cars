@@ -67,6 +67,10 @@
         <td><%= f.text_area :body %></td>
       </tr>
       <tr>
+        <th>画像</th>
+        <td><%= f.file_field :review_image, accept: "image/*" %></td>
+      </tr>
+      <tr>
         <td colspan="2">
           <%= f.submit "投稿する", class: "btn btn-success mt-3" %>
         </td>

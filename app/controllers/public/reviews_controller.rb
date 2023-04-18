@@ -18,6 +18,6 @@ class Public::ReviewsController < ApplicationController
   end
   private
   def review_params
-    params.require(:review).permit(:user_id, :type_id, :rate, :title, :body, :design, :driving_performance, :cost, :size, :safety, :rate)
+    params.require(:review).permit(:user_id, :type_id, :rate, :title, :body, :design, :driving_performance, :cost, :size, :safety, :rate, :review_image)
   end
 end
