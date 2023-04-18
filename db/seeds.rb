@@ -18,5 +18,5 @@ admin = Admin.create!(
 )
 user = User.create!(
   [
-    {name: 'aaa', emial: 'aaa@aaa', password: 'aaaaaa'}
+    {name: 'aaa', email: 'aaa@aaa', password: 'aaaaaa'}
     ])
