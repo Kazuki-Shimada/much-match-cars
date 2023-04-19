@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     get 'homes/about'
     get 'homes/top'
+    get 'guests/guidance'
   end
 
 

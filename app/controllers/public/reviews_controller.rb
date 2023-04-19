@@ -1,4 +1,5 @@
 class Public::ReviewsController < ApplicationController
+  before_action :is_signed_in, only:[:show, :new]
   def new
     @review = Review.new
   end
@@ -19,5 +20,10 @@ class Public::ReviewsController < ApplicationController
   private
   def review_params
     params.require(:review).permit(:user_id, :type_id, :rate, :title, :body, :design, :driving_performance, :cost, :size, :safety, :rate, :review_image)
+  end
+  def is_signed_in
+    unless user_signed_in?
+      redirect_to guests_guidance_path
+    end
   end
 end
