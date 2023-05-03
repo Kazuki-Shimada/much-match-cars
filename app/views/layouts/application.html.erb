@@ -15,9 +15,9 @@
     <header class="border-bottom shadow-sm bg-danger sticky-top">
       <nav class="navbar navbar-light">
         <div class="container my-3">
-          <!--< %= link_to homes_top_path, class: "text-decoration-none" do %>-->
-            <image class="logo_image" src="/assets/logo.png" with="200" height="140">
-          <!--< % end %>-->
+          <%= link_to homes_top_path, class: "text-decoration-none" do %>
+            <h1 class="site-name">Much Match Cars</h1>
+          <% end %>
           <% if user_signed_in? %>
           <ul class="navbar-nav ml-auto flex-row">
             <li class="nav-item px-4 mx-2 rounded border btn btn-danger">
