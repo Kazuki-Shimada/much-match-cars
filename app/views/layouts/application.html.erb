@@ -8,15 +8,17 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Carter+One&family=Noto+Serif+Japanese">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Carter+One&family=Noto+Serif+Japanese">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
   </head>
   <body class="d-flex flex-column vh-100">
     <header class="border-bottom shadow-sm bg-danger sticky-top">
-      <nav class="navbar navbar-light">
+      <nav class="navbar navbar-light navbar-expand-lg">
         <div class="container my-3">
           <%= link_to homes_top_path, class: "text-decoration-none" do %>
-            <h1 class="site-name">Much Match Cars</h1>
+            <h1 class="site-name text-white">Much Match Cars</h1>
           <% end %>
           <% if user_signed_in? %>
           <ul class="navbar-nav ml-auto flex-row">

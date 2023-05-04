@@ -7,5 +7,11 @@ body {
 }
 
 .site-name {
-  font-family: 'Carter One', serif;
+  font-family: 'Carter One', cursive;
+}
+
+@media screen and (max-width: 640px) {
+  .pc-nav {
+    display: none;
+  }
 }
