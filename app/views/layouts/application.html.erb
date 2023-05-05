@@ -20,21 +20,26 @@
           <%= link_to homes_top_path, class: "text-decoration-none" do %>
             <h1 class="site-name text-white">Much Match Cars</h1>
           <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <% if user_signed_in? %>
-          <ul class="navbar-nav ml-auto flex-row">
-            <li class="nav-item px-4 mx-2 rounded border btn btn-danger">
-              <%= link_to "トップ", homes_top_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
-              <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item px-2 mx-2 rounded border btn btn-danger">
-              <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
-            </li>
-          </ul>
+          <div class="collapse navbar-collapse justify-content-end  id="navbarSupportedContent"">
+            <ul class="navbar-nav ml-auto flex-row">
+              <li class="nav-item px-4 mx-2 rounded border btn btn-danger">
+                <%= link_to "トップ", homes_top_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item px-2 mx-2 rounded border btn btn-danger">
+                <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
+              </li>
+            </ul>
+          </div>
           <% elsif admin_signed_in? %>
           <ul class="navbar-nav ml-auto flex-row text-white">
             <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
