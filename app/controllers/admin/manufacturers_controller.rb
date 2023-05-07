@@ -2,7 +2,7 @@ class Admin::ManufacturersController < ApplicationController
   before_action :is_admin, only: [:index, :edit]
   def index
     @manufacturer = Manufacturer.new
-    @manufacturers = Manufacturer.all
+    @manufacturers = Manufacturer.all.order(created_at: :desc)
   end
 
   def edit

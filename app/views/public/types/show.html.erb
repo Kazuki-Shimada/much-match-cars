@@ -1,7 +1,7 @@
 
 <div class="container-fluid mt-5">
   <div class="row no-gutters">
-    <div class="col-4 p-2 bg-white">
+    <div class="col-sm-4 col-md-3 p-2 bg-white">
       <h3 style="margin:0;"><%= @type.model.name %></h3></br>
       <h4 style="margin:0;"><%= @type.name %></h4></br>
       <p style="margin:0;", class="text-secondary"><%= @type.model.manufacturer.name %></p></br>
@@ -9,19 +9,23 @@
       <table class="table mt-4">
         <tr>
           <th>最大乗用人数</th>
-          <td><%= @type.capacity %>人</td>
+          <td><%= @type.capacity %> 人</td>
         </tr>
         <tr>
           <th>排気量</th>
-          <td><%= @type.displacement %>cc</td>
+          <td><%= @type.displacement %> cc</td>
         </tr>
         <tr>
-          <th>燃費(WLTCモード)</th>
-          <td><%= @type.fuel_consumption %>km/L</td>
+          <th>燃費 (WLTC)</th>
+          <td><%= @type.fuel_consumption %> km/L</td>
         </tr>
         <tr>
           <th>燃料</th>
           <td><%= @type.fuel %></td>
+        </tr>
+        <tr>
+          <th>価格</th>
+          <td>¥ <%= @type.price.to_s(:delimited) %></td>
         </tr>
         <tr>
           <th>販売ステータス</th>
@@ -97,12 +101,12 @@
         <p>この車のレビューはまだありません</p>
       <% end %>
     </div>
-    <div class="col-8">
+    <div class="col-sm-8 col-md-9">
       <% if @type.reviews.exists? %>
         <% @reviews.each do |review| %>
           <div class="card w-75 container my-5">
             <div class="row no-gutters">
-              <div class="col-3 text-center pt-2">
+              <div class="col-md-3 text-center pt-2">
                 <% if review.review_image.attached? %>
                   <%= image_tag review.review_image, size:"100x100" %>
                 <% else %>
@@ -129,7 +133,7 @@
                   <%= review.comments.count %>コメント
                 <% end %>
               </div>
-              <div class="col-6">
+              <div class="col-md-6">
                 <div class="card-body">
 
                   <h3>
@@ -144,7 +148,7 @@
                   <p class="mt-2"><%= review.body %></p>
                 </div>
               </div>
-              <div class="col-3">
+              <div class="col-md-3">
                 <table class="table table-borderless">
                   <tr>
                     <td>デザイン</td>

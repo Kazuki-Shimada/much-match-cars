@@ -9,7 +9,7 @@ class Admin::TypesController < ApplicationController
   end
 
   def index
-    @types = Type.all
+    @types = Type.all.order(created_at: :desc)
   end
 
   def create
@@ -28,21 +28,21 @@ class Admin::TypesController < ApplicationController
       render :edit
     end
   end
-  
+
   def selected
     if params[:manufacturer_id]
       @models = Model.where(manufacturer_id: params[:manufacturer_id])
       render :model
     end
   end
-  
+
   def getTypeItems
     if params[:model_id]
       @Types = Model.where(manufacturer_id: params[:model_id])
       render :model
     end
   end
-  
+
   private
   def type_params
     params.require(:type).permit(:model_id, :name, :price, :fuel, :fuel_consumption, :capacity, :displacement, :is_selling, :type_image)

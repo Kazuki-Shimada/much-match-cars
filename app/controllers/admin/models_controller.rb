@@ -3,7 +3,7 @@ class Admin::ModelsController < ApplicationController
   def index
     @models = params[:name].present? ? Tag.find(params[:name]).models : Model.all
     @model = Model.new
-    @tags = Tag.all
+    @tags = Tag.all.order(created_at: :desc)
   end
 
   def edit

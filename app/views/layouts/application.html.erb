@@ -20,12 +20,13 @@
           <%= link_to homes_top_path, class: "text-decoration-none" do %>
             <h1 class="site-name text-white">Much Match Cars</h1>
           <% end %>
+          <% if user_signed_in? %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <% if user_signed_in? %>
-          <div class="collapse navbar-collapse justify-content-end  id="navbarSupportedContent"">
-            <ul class="navbar-nav ml-auto flex-row">
+
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
               <li class="nav-item px-4 mx-2 rounded border btn btn-danger">
                 <%= link_to "トップ", homes_top_path, class: 'nav-link text-white' %>
               </li>
@@ -75,7 +76,7 @@
       </nav>
     </header>
     <main class="mb-auto mt-3">
-      <% if user_signed_in? %>
+      <% if user_signed_in? || admin_signed_in? %>
         <%= render 'public/searches/search' %>
       <% end %>
       <%= yield %>

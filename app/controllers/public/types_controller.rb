@@ -2,7 +2,7 @@ class Public::TypesController < ApplicationController
   def show
     @type = Type.find(params[:id])
     @total = 0
-    @reviews = Review.where(type_id: @type.id)
+    @reviews = Review.where(type_id: @type.id).order("created_at DESC").page(params[:page]).per(10)
   end
   def selected
     if params[:manufacturer_id]
