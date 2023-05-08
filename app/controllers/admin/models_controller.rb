@@ -27,13 +27,12 @@ class Admin::ModelsController < ApplicationController
   end
 
   private
-  def model_params
-    params.require(:model).permit(:manufacturer_id, :name, :model_image, :price, tag_ids: [])
-  end
-  def is_admin
-    unless admin_signed_in?
-      redirect_to root_path
+    def model_params
+      params.require(:model).permit(:manufacturer_id, :name, :model_image, :price, tag_ids: [])
     end
-  end
-
+    def is_admin
+      unless admin_signed_in?
+        redirect_to root_path
+      end
+    end
 end

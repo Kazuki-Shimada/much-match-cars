@@ -44,13 +44,12 @@ class Admin::TypesController < ApplicationController
   end
 
   private
-  def type_params
-    params.require(:type).permit(:model_id, :name, :price, :fuel, :fuel_consumption, :capacity, :displacement, :is_selling, :type_image)
-  end
-  def is_admin
-    unless admin_signed_in?
-      redirect_to root_path
+    def type_params
+      params.require(:type).permit(:model_id, :name, :price, :fuel, :fuel_consumption, :capacity, :displacement, :is_selling, :type_image)
     end
-  end
-
+    def is_admin
+      unless admin_signed_in?
+        redirect_to root_path
+      end
+    end
 end

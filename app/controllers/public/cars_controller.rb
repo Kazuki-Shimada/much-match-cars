@@ -1,5 +1,4 @@
 class Public::CarsController < ApplicationController
-
   def edit
     @car = Car.find(params[:id])
   end
@@ -35,8 +34,7 @@ class Public::CarsController < ApplicationController
   end
 
   private
-
-  def car_params
-    params.require(:car).permit(:user_id, :type_id, :model_year, :car_image, :manufacturer_id, :model_id)
-  end
+    def car_params
+      params.require(:car).permit(:user_id, :type_id, :model_year, :car_image, :manufacturer_id, :model_id)
+    end
 end

@@ -42,35 +42,45 @@
             </ul>
           </div>
           <% elsif admin_signed_in? %>
-          <ul class="navbar-nav ml-auto flex-row text-white">
-            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
-              <%= link_to "投稿一覧", admin_reviews_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
-              <%= link_to "タイプ一覧", admin_types_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
-              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %>
-            </li>
-          </ul>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "投稿一覧", admin_reviews_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "タイプ一覧", admin_types_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %>
+              </li>
+            </ul>
+          </div>
           <% else %>
-          <ul class="navbar-nav ml-auto flex-row">
-            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
-              <%= link_to "about", homes_about_path, class: 'nav-link text-white text-white' %>
-            </li>
-            <li class="nav-item px-4 mx-2 rounded border btn btn-danger">
-              <%= link_to "トップ", homes_top_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white' %>
-            </li>
-          </ul>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "about", homes_about_path, class: 'nav-link text-white text-white' %>
+              </li>
+              <li class="nav-item px-4 mx-2 rounded border btn btn-danger">
+                <%= link_to "トップ", homes_top_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white' %>
+              </li>
+            </ul>
+          </div>
           <% end %>
         </div>
       </nav>

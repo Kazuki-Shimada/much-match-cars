@@ -27,13 +27,12 @@ class Admin::ManufacturersController < ApplicationController
   end
 
   private
-
-  def manufacturer_params
-    params.require(:manufacturer).permit(:name)
-  end
-  def is_admin
-    unless admin_signed_in?
-      redirect_to root_path
+    def manufacturer_params
+      params.require(:manufacturer).permit(:name)
     end
-  end
+    def is_admin
+      unless admin_signed_in?
+        redirect_to root_path
+      end
+    end
 end

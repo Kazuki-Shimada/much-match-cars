@@ -17,12 +17,12 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:user).permit(:is_deleted)
-  end
-  def is_admin
-    unless admin_signed_in?
-      redirect_to root_path
+    def user_params
+      params.require(:user).permit(:is_deleted)
     end
-  end
+    def is_admin
+      unless admin_signed_in?
+        redirect_to root_path
+      end
+    end
 end

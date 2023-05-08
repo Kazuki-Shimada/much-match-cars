@@ -3,7 +3,7 @@ class Review < ApplicationRecord
   belongs_to :type
   has_many :goods, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_one_attached:review_image
+  has_one_attached :review_image
 
   validates :title, presence: true
   validates :body, presence: true

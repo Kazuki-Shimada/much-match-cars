@@ -4,6 +4,6 @@ class Manufacturer < ApplicationRecord
   validates :name, presence: true
 
   def self.looks(word)
-    @manufacturer =Manufacturer.where("name LIKE?", "%#{word}%")
+    @manufacturer = Manufacturer.where("name LIKE?", "%#{word}%")
   end
 end
