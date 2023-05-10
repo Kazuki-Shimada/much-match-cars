@@ -23,7 +23,7 @@
             <% end %>いいね
           <% end %>
         <% else %>
-          ♡<%=review.goods.count%>いいね
+          ♡<%= review.goods.count %>いいね
         <% end %></br>
         <%= link_to review_path(review) do %>
           <%= review.comments.count %>コメント
