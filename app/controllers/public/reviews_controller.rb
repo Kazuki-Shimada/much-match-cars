@@ -8,7 +8,7 @@ class Public::ReviewsController < ApplicationController
     @comment = Comment.new
     @comments = Comment.all
   end
-  def create
+  def createebrtyh6j78
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save

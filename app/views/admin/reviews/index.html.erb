@@ -23,12 +23,10 @@
           <h3>
             <%= review.type.model.manufacturer.name %></br>
             <%= link_to model_path(review.type.model) do %>
-              <%= review.type.model.name %>
+              <%= review.type.model.name %>wgevfrcgnthmyu
             <% end %>
           </h3>
-          <%= link_to type_path(review.type) do %>
-            <p class="m-0"><%= review.type.name %></p></br>
-          <% end %>
+          <p class="m-0"><%= review.type.name %></p></br>
           <p class="text-secondary"><%= l review.created_at %>に投稿</p></br>
           <font size="5"><%= review.title %></font></br>
           <p class="mt-2"><%= review.body %></p>
