@@ -26,11 +26,14 @@
           ♡<%= review.goods.count %>いいね
         <% end %></br>
         <%= link_to review_path(review) do %>
-          <%= review.comments.count %>コメント
+          <%= review.comments.count %>コメント</br>
+        <% end %>
+        <% if current_user == review.user %>
+          <%= link_to "削除", review_path(review), method: :delete, class: "btn btn-danger" %>
         <% end %>
       </div>
       <div class="col-md-6">
-        <div class="card-body">vphisefojk
+        <div class="card-body">
           <h3>
             <%= review.type.model.manufacturer.name %></br>
             <%= link_to model_path(review.type.model), class: "text-decoration-none" do %>

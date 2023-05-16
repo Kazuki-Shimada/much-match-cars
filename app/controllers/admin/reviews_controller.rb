@@ -1,5 +1,5 @@
 class Admin::ReviewsController < ApplicationController
-  before_action :is_admin, only: [:index, :edit]
+  before_action :is_admin, only: [:index, :edit, :destroy]
   def index
     @reviews = Review.order("created_at DESC").page(params[:page]).per(10)
   end
