@@ -38,7 +38,7 @@ class Public::ReviewsController < ApplicationController
     end
     def review_user
       unless current_user == review.user
-        redirect_to root_path
+        redirect_to :new
       end
     end
 end
