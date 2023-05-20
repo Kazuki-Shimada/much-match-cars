@@ -1,6 +1,6 @@
 class Public::ReviewsController < ApplicationController
   before_action :is_signed_in, only: [:show, :new]
-  before_action :review_user, only: [:delete]
+  before_action :review_user, only: [:destroy]
   def new
     @review = Review.new
   end
@@ -37,8 +37,9 @@ class Public::ReviewsController < ApplicationController
       end
     end
     def review_user
-      unless current_user == review.user
-        redirect_to :new
+      params[:review][:user_id]
+      if review.user_id == current_user.id
+        redirect_to root_path
       end
     end
 end
