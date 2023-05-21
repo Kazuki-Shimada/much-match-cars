@@ -37,8 +37,7 @@ class Public::ReviewsController < ApplicationController
       end
     end
     def review_user
-      params[:review][:user_id]
-      if review.user_id == current_user.id
+      unless Review.find(params[:id]).user == current_user
         redirect_to root_path
       end
     end
