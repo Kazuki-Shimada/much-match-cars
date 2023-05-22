@@ -9,7 +9,7 @@ class Admin::TypesController < ApplicationController
   end
 
   def index
-    @types = Type.all.order(created_at: :desc)
+    @types = Type.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def create
