@@ -1,7 +1,7 @@
 class Admin::ReviewsController < ApplicationController
   before_action :is_admin, only: [:index, :edit, :destroy]
   def index
-    @reviews = Review.order("created_at DESC").page(params[:page]).per(10)
+    @reviews = Review.order("created_at DESC").page(params[:page]).per(5)
   end
   def show
     @review = Review.find(params[:id])
