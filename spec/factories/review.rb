@@ -5,7 +5,7 @@
 #   end
 # end
 
-FactoryBot.define do
+FactoryBot.define docqwds
   factory :review do
     title { Faker::Lorem.characters(number:10) }
     body { Faker::Lorem.characters(number:30) }
