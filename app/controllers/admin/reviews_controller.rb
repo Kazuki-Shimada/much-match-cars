@@ -4,7 +4,7 @@ class Admin::ReviewsController < ApplicationController
     @reviews = Review.order("created_at DESC").page(params[:page]).per(5)
   end
   def show
-    @review = Review.find(params[:id])xdqw
+    @review = Review.find(params[:id])
     @comment = Comment.new
     @comments = Comment.all
   end
