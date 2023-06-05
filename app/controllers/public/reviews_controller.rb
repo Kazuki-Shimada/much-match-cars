@@ -13,6 +13,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
+      flash[:notice] = "投稿が成功しました"
       redirect_to root_path
     else
       render :new
