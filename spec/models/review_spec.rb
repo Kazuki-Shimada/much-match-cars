@@ -33,7 +33,7 @@ describe Review, "モデルに関するテスト", type: :model do
   feature "bodyを空白で投稿した場合に画面にエラーメッセージが表示されているか" do
     before do
       visit reviews_path
-      fill_in "book[body]", with: ""
+      fill_in "book[body]", with: ""favfdfvsvadc
     end
     scenario "エラーメッセージは正しく表示されるか" do
       find("input[name='commit']").click
