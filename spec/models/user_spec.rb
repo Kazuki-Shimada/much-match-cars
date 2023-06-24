@@ -69,12 +69,50 @@ RSpec.describe User, type: :model do
   end
   
   describe 'フォーマットの検証' do
-    it 'メールアドレスが正常なフォーマットの場合、有効であること' do
+    it 'メールアドレスが正常なフォーマットの場合、有効である' do
       valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                            first.last@foo.jp alice+bob@baz.cn]
       valid_addresses.each do |valid_address|
         @user.email = valid_address
         expect(@user).to be_valid
+      end
+    end
+  end
+  
+  describe "各モデルとのアソシエーション" do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+    
+    context "Carとのアソシエーション" do
+      let(:target) { :cars }
+      it "Carとのアソシエーションはhas_manyである" do
+        expect(association.macro).to eq :has_many
+        expect(association.class_name).to eq 'Car'
+      end
+    end
+    
+    context "Reviewとのアソシエーション" do
+      let(:target) { :reviews }
+      it "Reviewとのアソシエーションはhas_manyである" do
+        expect(association.macro).to eq :has_many
+        expect(association.class_name).to eq 'Review'
+      end
+    end
+    
+    context "Goodとのアソシエーション" do
+      let(:target) { :goods }
+      it "Goodとのアソシエーションはhas_manyである" do
+        expect(association.macro).to eq :has_many
+        expect(association.class_name).to eq 'Good'
+      end
+    end
+    
+    context "Commentとのアソシエーション" do
+      let(:target) { :comments }
+      it "Commentとのアソシエーションはhas_manyである" do
+        expect(association.macro).to eq :has_many
+        expect(association.class_name).to eq 'Comment'
       end
     end
   end

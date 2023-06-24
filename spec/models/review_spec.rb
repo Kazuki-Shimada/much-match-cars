@@ -30,30 +30,68 @@ RSpec.describe Review, type: :model do
         @review.valid?
         expect(@review.errors.full_messages).to include("総評価を入力してください")
       end
-      it "bodyが空だと投稿できず、エラーメッセージが表示される" do
-        @review.body = nil
+      it "designが空だと投稿できず、エラーメッセージが表示される" do
+        @review.design = nil
         @review.valid?
-        expect(@review.errors.full_messages).to include("本文を入力してください")
+        expect(@review.errors.full_messages).to include("デザインを入力してください")
       end
-      it "bodyが空だと投稿できず、エラーメッセージが表示される" do
-        @review.body = nil
+      it "driving_performanceが空だと投稿できず、エラーメッセージが表示される" do
+        @review.driving_performance = nil
         @review.valid?
-        expect(@review.errors.full_messages).to include("本文を入力してください")
+        expect(@review.errors.full_messages).to include("運転性能を入力してください")
       end
-      it "bodyが空だと投稿できず、エラーメッセージが表示される" do
-        @review.body = nil
+      it "costが空だと投稿できず、エラーメッセージが表示される" do
+        @review.cost = nil
         @review.valid?
-        expect(@review.errors.full_messages).to include("本文を入力してください")
+        expect(@review.errors.full_messages).to include("価格を入力してください")
       end
-      it "bodyが空だと投稿できず、エラーメッセージが表示される" do
-        @review.body = nil
+      it "sizeが空だと投稿できず、エラーメッセージが表示される" do
+        @review.size = nil
         @review.valid?
-        expect(@review.errors.full_messages).to include("本文を入力してください")
+        expect(@review.errors.full_messages).to include("広さを入力してください")
       end
-      it "bodyが空だと投稿できず、エラーメッセージが表示される" do
-        @review.body = nil
+      it "safetyが空だと投稿できず、エラーメッセージが表示される" do
+        @review.safety = nil
         @review.valid?
-        expect(@review.errors.full_messages).to include("本文を入力してください")
+        expect(@review.errors.full_messages).to include("安全性能を入力してください")
+      end
+    end
+  end
+  
+  describe "各モデルとのアソシエーション" do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+    
+    context "Userとのアソシエーション" do
+      let(:target) { :user }
+      it "Userとのアソシエーションはbelongs_toである" do
+        expect(association.macro).to eq :belongs_to
+        expect(association.class_name).to eq 'User'
+      end
+    end
+    
+    context "Typeとのアソシエーション" do
+      let(:target) { :type }
+      it "Typeとのアソシエーションはbelongs_toである" do
+        expect(association.macro).to eq :belongs_to
+        expect(association.class_name).to eq 'Type'
+      end
+    end
+    
+    context "Goodとのアソシエーション" do
+      let(:target) { :goods }
+      it "Goodとのアソシエーションはhas_manyである" do
+        expect(association.macro).to eq :has_many
+        expect(association.class_name).to eq 'Good'
+      end
+    end
+    
+    context "Commentとのアソシエーション" do
+      let(:target) { :comments }
+      it "Commentとのアソシエーションはhas_manyである" do
+        expect(association.macro).to eq :has_many
+        expect(association.class_name).to eq 'Comment'
       end
     end
   end
