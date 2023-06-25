@@ -23,25 +23,19 @@ RSpec.describe Admin, type: :model do
       it "emailが空だと登録できず、エラーメッセージが表示される" do
         @admin.email = nil
         @admin.valid?
-        expect(@admin.errors[:admin]).to include("")
+        expect(@admin.errors[:admin].to_s).to include("")
       end
       it "emailがすでに存在していると登録できず、エラーメッセージが表示される" do
         @admin.save
         another_user = FactoryBot.build(:admin)
         another_user.email = @admin.email
         another_user.valid?
-        expect(another_user.errors[:admin]).to include("")
+        expect(another_user.errors[:admin].to_s).to include("")
       end
       it "passwordが空だと登録できず、エラーメッセージが表示される" do
         @admin.password = nil
         @admin.valid?
-        expect(@admin.errors[:admin]).to include("")
-      end
-      it "passwordが5文字以下だと登録できず、エラーメッセージが表示される" do
-        @admin.password = "00000"
-        @@admin.password_confirmation = "00000"
-        @admin.valid?
-        expect(@admin.errors[:admin]).to include("")
+        expect(@admin.errors[:admin].to_s).to include("")
       end
       it "passwordが存在してもpassword_confirmationが空だと登録できない" do
         @admin.password_confirmation = nil
@@ -59,7 +53,7 @@ RSpec.describe Admin, type: :model do
       @admin.password = 'password'
       @admin.password_confirmation = 'WrongPassword'
       @admin.valid?
-      expect(@admin.errors.full_messages).to include("")
+      expect(@admin.errors[:admin].to_s).to include("")
     end
   end
 

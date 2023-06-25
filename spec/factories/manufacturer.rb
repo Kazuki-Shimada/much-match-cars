@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :manufacturer do
-    name { Faker::Name.name }
+    name { Faker::Lorem.characters(number: 3) }
   end
 end

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tag do
-    name { Faker::Name.name }
+    name { Faker::Lorem.characters(number: 5) }
   end
 end

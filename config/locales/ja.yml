@@ -19,6 +19,10 @@ ja:
         cost: 価格
         size: 広さ
         safety: 安全性能
+      manufacturer:
+        name: メーカー名
+      tag:
+        name: タグ名
   date:
     abbr_day_names:
     - 日

@@ -8,13 +8,13 @@ RSpec.describe Review, type: :model do
   end
 
   describe 'reviewの投稿' do
-    context "投稿がうまくいくとき" do
+    context "有効な投稿であるとき" do
       it '有効な投稿内容の場合、保存される' do
         expect(@review).to be_valid
       end
     end
 
-    context "投稿がうまくいかないとき" do
+    context "無効な投稿であるとき" do
       it "titleが空だと投稿できずエラーメッセージが表示される" do
         @review.title = nil
         @review.valid?
@@ -62,7 +62,6 @@ RSpec.describe Review, type: :model do
     let(:association) do
       described_class.reflect_on_association(target)
     end
-    
     context "Userとのアソシエーション" do
       let(:target) { :user }
       it "Userとのアソシエーションはbelongs_toである" do

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :good do
     association :user
-    association :re
+    association :review
   end
 end
