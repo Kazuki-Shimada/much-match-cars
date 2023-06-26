@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
-      it "nameとemailとpasswordとpassword_confirmationが存在する" do
+      it "有効な登録の場合、保存される" do
         expect(@user).to be_valid
       end
       it "emailは全て小文字で保存される" do
