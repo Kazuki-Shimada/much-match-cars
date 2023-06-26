@@ -95,14 +95,28 @@ RSpec.describe 'Users', type: :system do
 
   describe 'ログイン後' do
     let(:user) { FactoryBot.create(:user) }
+    before do
+      login(user)
+    end
     describe 'ユーザー編集' do
       context '編集がうまくいくとき' do
         it '有効な編集の場合、保存される' do
           visit edit_user_path(user)
           fill_in 'user[name]', with: '山田　山男'
           fill_in 'user[introduct]', with: 'edit introduct sample'
+          attach_file 'user[profile_image]', "#{Rails.root}/spec/fixtures/sample-user1.jpg"
           click_button '確定'
           expect(current_path).to eq user_path(user)
+        end
+      end
+
+      context '編集がうまくいかないとき' do
+        it 'nameが空だと登録できず、エラーメッセージが表示される' do
+          visit edit_user_path(user)
+          fill_in 'user[name]', with: ''
+          click_button '確定'
+          expect(current_path).to eq user_path(user)
+          expect(page).to have_content("ユーザー名を入力してください")
         end
       end
     end

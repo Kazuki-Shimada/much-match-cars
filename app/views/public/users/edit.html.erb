@@ -1,5 +1,9 @@
 <h2 class="mx-5 mt-5">プロフィール編集</h2>
+<% if @user.errors.any? %>
+  <%= render 'public/shared/error_messages', hoge: @user %>
+<% end %>
 <div class="container text-center">
+  <%= flash[:success] %>
   <%= form_with model: @user, url: user_path, method: :patch do |f| %>
     <table class="table">
       <tr>
