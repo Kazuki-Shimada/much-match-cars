@@ -99,9 +99,11 @@ RSpec.describe 'Users', type: :system do
       login(user)
     end
     describe 'ユーザー編集' do
+      before do
+        visit edit_user_path(user)
+      end
       context '編集がうまくいくとき' do
         it '有効な編集の場合、保存される' do
-          visit edit_user_path(user)
           fill_in 'user[name]', with: '山田　山男'
           fill_in 'user[introduct]', with: 'edit introduct sample'
           attach_file 'user[profile_image]', "#{Rails.root}/spec/fixtures/sample-user1.jpg"
@@ -112,12 +114,27 @@ RSpec.describe 'Users', type: :system do
 
       context '編集がうまくいかないとき' do
         it 'nameが空だと登録できず、エラーメッセージが表示される' do
-          visit edit_user_path(user)
           fill_in 'user[name]', with: ''
           click_button '確定'
           expect(current_path).to eq user_path(user)
           expect(page).to have_content("ユーザー名を入力してください")
         end
+      end
+    end
+
+    describe '退会機能' do
+      it "退会を確定するとログインできなくなる" do
+        visit edit_user_path(user)
+        click_link '退会する'
+        expect(current_path).to eq users_confirm_path
+        click_link '退会する'
+        reset_session!
+        expect(user.reload.is_deleted).to eq true
+        expect(current_path).to eq new_session_path
+        fill_in 'user[email]', with: 'user[email]'
+        fill_in 'user[password]', with: 'user[password]'
+        expect(current_path).to eq new_session_path
+        expect(current_user.id).to eq nil
       end
     end
   end
