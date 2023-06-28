@@ -69,5 +69,8 @@ RSpec.configure do |config|
     driven_by :selenium_chrome_headless
   end
   config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Warden::Test::Helpers
   config.include LoginMacros
 end
