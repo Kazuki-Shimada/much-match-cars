@@ -1,0 +1,17 @@
+<div>
+  <span id="back", class="fixed-bottom arrow">
+    <a href="#">
+      <%= image_tag "arrow.png", height: "50" %>
+    </a>
+  </span>
+  <script>
+    $(function() {
+      $('#back a').on('click',function(event){
+        $('body, html').animate({
+          scrollTop:0
+        }, 800);
+        event.preventDefault();
+      });
+    });
+  </script>
+</div>  

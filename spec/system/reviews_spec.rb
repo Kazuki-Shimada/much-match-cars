@@ -22,7 +22,9 @@ RSpec.describe 'Reviews', type: :system do
         fill_in "review[title]", with: "とっても広い！"
         fill_in "review[body]", with: "とっても広いくて乗っている人みんなが快適に過ごせる！"
         attach_file 'review[review_image]', "#{Rails.root}/spec/fixtures/typer.jpg"
-        click_button '投稿する'
+        expect{
+          find('input[id="submit"]').click
+        }.to change { Review.count }.by(1)
         expect(page).to have_content '投稿が成功しました'
         expect(current_path).to eq root_path
       end
@@ -154,6 +156,32 @@ RSpec.describe 'Reviews', type: :system do
     end
   end
   describe 'レビュー削除' do
-    
+    before do
+      @review1 = create(:review)
+      @review2 = create(:review)
+    end
+    context "投稿が削除できるとき" do
+      it "投稿主は削除できる" do
+        sign_in(@review1.user)
+        visit root_path
+        expect(page).to have_content('削除')
+        expect{
+          find_link('削除', href: review_path(@review1)).click
+        }.to change { Review.count }.by(-1)
+        expect(page).to have_content '投稿を削除しました'
+        expect(page).to have_no_content("#{@review1.title}")
+      end
+    end
+    context "投稿が削除できないとき" do
+      it "投稿主以外には削除ボタンが表示されない" do
+        sign_in(@review1.user)
+        visit root_path
+        expect(page).to have_no_link '削除', href: review_path(@review2)
+      end
+      it "ログインしないと削除ボタンが表示されない" do
+        visit root_path
+        expect(page).to have_no_link('削除'), href: review_path(@review1)
+      end
+    end
   end
 end

@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
   </head>
   <body class="d-flex flex-column vh-100">
-    <header class="border-bottom shadow-sm bg-danger sticky-top">
+    <header class="border-bottom shadow-sm bg-danger fixed-top">
       <nav class="navbar navbar-light navbar-expand-lg">
         <div class="container my-3">
           <%= link_to homes_top_path, class: "text-decoration-none" do %>
@@ -85,12 +85,12 @@
         </div>
       </nav>
     </header>
-    <main class="mb-auto mt-3">
+    <body class="mb-auto mt-3">
       <% if user_signed_in? || admin_signed_in? %>
         <%= render 'public/searches/search' %>
       <% end %>
       <%= yield %>
-    </main>
+    </body>
     <footer class="mt-5">
       <div class="text-center py-5 text-white bg-secondary">
         ©︎Kazuki Sakaue

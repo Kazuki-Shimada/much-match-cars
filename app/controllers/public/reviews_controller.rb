@@ -22,6 +22,7 @@ class Public::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     if @review.destroy
+      flash[:deleted] = "投稿を削除しました"
       redirect_to root_path
     else
       render :new
