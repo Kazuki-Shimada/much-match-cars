@@ -4,8 +4,11 @@ class Public::CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @review = Review.find(params[:review_id])
     @comment.review_id = @review.id
-    @comment.save
-    redirect_to review_path(@comment.review)
+    if @comment.save
+      redirect_to review_path(@comment.review)
+    else
+      render 'public/reviews/show'
+    end
   end
 
   private

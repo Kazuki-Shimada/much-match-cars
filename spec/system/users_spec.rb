@@ -98,6 +98,15 @@ RSpec.describe 'Users', type: :system do
       @user = FactoryBot.create(:user)
       sign_in @user
     end
+    describe 'ユーザー検索'do
+      it '検索をクリックするとユーザーが表示される' do
+        visit root_path
+        fill_in 'word', with: ''
+        click_button '検索'
+        expect(current_path).to eq search_path
+        expect(page).to have_content(@user.name)
+      end
+    end
     describe 'ユーザー編集' do
       before { visit edit_user_path(@user) }
       context '編集がうまくいくとき' do

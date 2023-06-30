@@ -1,11 +1,6 @@
 <h2 class="mx-5 mt-3">レビュー詳細</h2>
 <% if @comment.errors.any? %>
-  <%= @comment.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @comment.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <%= render 'public/shared/error_messages', hoge: @comment %>
 <% end %>
 <div class="card w-75 container my-5">
   <div class="row no-gutters">
@@ -95,7 +90,7 @@
     <h4>コメントする</h4>
     <%= form_with model: @comment, url: review_comments_path(@review.id), method: :post do |f| %>
       <%= f.text_area :body %></br>
-      <%= f.submit "投稿する", class: "btn btn-success mt-3" %>
+      <%= f.submit "投稿する", id: "submit", class: "btn btn-success mt-3" %>
     <% end %>
   </div>
 </div>

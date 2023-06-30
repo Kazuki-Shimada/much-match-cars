@@ -1,4 +1,8 @@
+
 <h2 class="mx-5 mt-3">My car登録</h2>
+<% if @car.errors.any? %>
+  <%= render 'public/shared/error_messages', hoge: @car %>
+<% end %>
 <div class="container text-center">
   <%= form_with model: @car, url: cars_path, method: :post do |f| %>
     <table class="table">

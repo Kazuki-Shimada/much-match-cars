@@ -18,11 +18,11 @@
         <% end %>
         <% if user_signed_in? %>
           <% if review.gooded_by?(current_user) %>
-            <%= link_to review_goods_path(review), method: :delete do %>
+            <%= link_to review_goods_path(review), id: "good", method: :delete do %>
               🤍<%= review.goods.count %>
             <% end %>いいね
           <% else %>
-            <%= link_to review_goods_path(review), method: :post do %>
+            <%= link_to review_goods_path(review),id: "nogood", method: :post do %>
               ♡<%= review.goods.count %>
             <% end %>いいね
           <% end %>
@@ -83,9 +83,6 @@
     </div>
   </div>
 <% end %>
-
-
-
 <div class="container text-center mb-5">
   <%= link_to "レビューする", new_review_path, class: "btn btn-primary mt-5" %>
 </div>
