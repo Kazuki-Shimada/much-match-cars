@@ -15,6 +15,7 @@ RSpec.describe 'Comments', type: :system do
         }.to change { Comment.count }.by(1)
     end
   end
+  
   describe 'コメントできないとき' do
     it "ログインしていないとコメントできない" do
       @review = create(:review)

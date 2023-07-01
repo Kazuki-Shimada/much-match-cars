@@ -18,7 +18,7 @@ RSpec.describe Comment, type: :model do
       it 'bodyが空だと投稿できずにエラーメッセージが表示される' do
         @comment.body = nil
         @comment.valid?
-        expect(@comment.errors.full_messages).to include("Bodyを入力してください")
+        expect(@comment.errors.full_messages).to include("コメントを入力してください")
       end
     end
   end

@@ -90,6 +90,16 @@ RSpec.describe 'Users', type: :system do
           expect(current_path).to eq '/user'
         end
       end
+      context "ログインできるとき" do
+        it "有効な内容の場合、ログインできる" do
+          @user = FactoryBot.create(:user)
+          visit new_user_session_path
+          fill_in 'user[email]', with: @user.email
+          fill_in 'user[password]', with: @user.password
+          click_button 'ログイン'
+          expect(current_path).to eq user_path(@user)
+        end
+      end
     end
   end
 
