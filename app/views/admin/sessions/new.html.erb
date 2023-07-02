@@ -1,8 +1,7 @@
 <h2 class="mx-5 mt-5">管理者ログイン</h2>
+<p class="alert text-danger text-center"><%= alert %></p>
 <div class="container text-center">
 <%= form_with model: @admin, url: admin_session_path do |f| %>
-    <%= render "admin/shared/error_messages", resource: resource %>
-
     <table class="table table-borderless mt-5">
       <tr>
         <th>メールアドレス</th>

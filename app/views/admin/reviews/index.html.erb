@@ -1,4 +1,7 @@
-<h2 class="mx-5 mt-3">投稿一覧</h2>
+<h2 class="mx-5 mt-3">レビュー一覧</h2>
+<div class="text-center text-success">
+  <%= flash[:deleted]%>
+</div>
 <% @reviews.each do |review| %>
   <div class="card w-75 container my-5">
     <div class="row no-gutters">

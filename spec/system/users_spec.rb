@@ -100,6 +100,25 @@ RSpec.describe 'Users', type: :system do
           expect(current_path).to eq user_path(@user)
         end
       end
+
+      context "ログインできないとき" do
+        it "メールが空の場合、ログインできない" do
+          @user = FactoryBot.create(:user)
+          visit new_user_session_path
+          fill_in 'user[password]', with: @user.password
+          click_button 'ログイン'
+          expect(page).to have_content "Eメールまたはパスワードが違います。"
+          expect(current_path).to eq new_user_session_path
+        end
+        it "パスワードが空の場合、ログインできない" do
+          @user = FactoryBot.create(:user)
+          visit new_user_session_path
+          fill_in 'user[email]', with: @user.email
+          click_button 'ログイン'
+          expect(page).to have_content "Eメールまたはパスワードが違います。"
+          expect(current_path).to eq new_user_session_path
+        end
+      end
     end
   end
 
@@ -151,6 +170,28 @@ RSpec.describe 'Users', type: :system do
         fill_in 'user[password]', with: 'user[password]'
         click_button 'ログイン'
         expect(current_path).to eq new_user_session_path
+      end
+      it "管理者に退会を解除されるとログインできるようになる" do
+        visit edit_user_path(@user)
+        click_link '退会する'
+        expect(current_path).to eq users_confirm_path
+        click_link '退会する'
+        expect(@user.reload.is_deleted).to eq true
+        @admin = create(:admin)
+        sign_in @admin
+        visit admin_users_path
+        click_link @user.name
+        expect(page).to have_checked_field '退会'
+        choose '有効'
+        expect(page).to have_checked_field '有効'
+        click_button '変更内容を保存'
+        expect(@user.reload.is_deleted).to eq false
+        click_link 'ログアウト'
+        visit new_user_session_path
+        fill_in 'user[email]', with: @user.email
+        fill_in 'user[password]', with: @user.password
+        click_button 'ログイン'
+        expect(current_path).to eq user_path(@user)
       end
     end
   end

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     patch "users/withdrawal" => "users#withdrawal"
     resources :reviews, only: [:new, :show, :create, :update, :destroy] do
       resource :goods, only: [:create, :destroy]
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :index, :edit, :update]
     resources :cars, only: [:new, :edit, :create, :update, :destroy]

@@ -1,4 +1,7 @@
 <h2 class="mx-5 mt-3">レビュー詳細</h2>
+<div class="text-center text-success">
+  <%= flash[:deleted] %>
+</div>
 <% if @comment.errors.any? %>
   <%= render 'public/shared/error_messages', hoge: @comment %>
 <% end %>
@@ -77,12 +80,17 @@
   <div class="text-left">
     <% @review.comments.each do |comment| %>
     <div class="my-3 row">
-      <div class="col-3">
+      <div class="col-md-3">
         <%= image_tag comment.user.get_profile_image(100,100)%>
       </div>
-      <div class="col-9 bg-light rounded-pill px-4">
+      <div class="col-md-7 bg-light rounded-pill px-4">
         <strong><%= comment.user.name %></strong></br>
         <%= comment.body %>
+      </div>
+      <div class="col-md-2">
+        <% if current_user == comment.user %>
+          <%= link_to "削除", review_comment_path(comment), method: :delete, class: "btn btn-danger mt-2" %>
+        <% end %>
       </div>
     </div>
     <% end %>

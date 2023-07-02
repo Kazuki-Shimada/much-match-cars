@@ -159,14 +159,23 @@ RSpec.describe 'Reviews', type: :system do
     before do
       @review1 = create(:review)
       @review2 = create(:review)
+      @admin = create(:admin)
     end
     context "投稿が削除できるとき" do
       it "投稿主は削除できる" do
         sign_in(@review1.user)
         visit root_path
-        expect(page).to have_content('削除')
         expect{
           find_link('削除', href: review_path(@review1)).click
+        }.to change { Review.count }.by(-1)
+        expect(page).to have_content '投稿を削除しました'
+        expect(page).to have_no_content("#{@review1.title}")
+      end
+      it "管理者は削除できる" do
+        sign_in @admin
+        visit admin_reviews_path
+        expect{
+          find_link('削除', href: admin_review_path(@review1)).click
         }.to change { Review.count }.by(-1)
         expect(page).to have_content '投稿を削除しました'
         expect(page).to have_no_content("#{@review1.title}")

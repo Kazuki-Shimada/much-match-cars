@@ -4,6 +4,7 @@ class Admin::CommentsController < ApplicationController
     @review = Review.find(params[:id])
     comment = @review.comments.find(params[:review_id])
     if comment.destroy
+      flash[:deleted] = "コメントを削除しました"
       redirect_to admin_review_path(comment.review)
     else
       render :index

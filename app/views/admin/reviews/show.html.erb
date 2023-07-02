@@ -1,4 +1,7 @@
 <h2 class="mx-5 mt-3">レビュー詳細</h2>
+<div class="text-center text-success">
+  <%= flash[:deleted] %>
+</div>
 <% if @comment.errors.any? %>
   <%= @comment.errors.count %>件のエラーが発生しました
   <ul>

@@ -3,24 +3,55 @@
 require "rails_helper"
 
 RSpec.describe 'Comments', type: :system do
-  describe 'コメントできるとき' do
-    it "ログインしているとコメントできる" do
-      @user = create(:user)
-      @review = create(:review)
-      sign_in @user
-      visit review_path(@review)
-      fill_in "comment[body]", with: "わかります！めっちゃ広いですよね！"
-      expect{
-          find('input[id="submit"]').click
-        }.to change { Comment.count }.by(1)
+  before do
+    @review = create(:review)
+    @user = crate(:user)
+  end
+  describe 'コメント投稿機能' do
+    context 'コメントできるとき' do
+      it "ログインしているとコメントできる" do
+        sign_in @user
+        visit review_path(@review)
+        fill_in "comment[body]", with: "わかります！めっちゃ広いですよね！"
+        expect{
+            find('input[id="submit"]').click
+          }.to change { Comment.count }.by(1)
+      end
+    end
+    
+    context 'コメントできないとき' do
+      it "ログインしていないとコメントできない" do
+        visit review_path(@review)
+        expect(current_path).to eq guests_guidance_path
+      end
     end
   end
   
-  describe 'コメントできないとき' do
-    it "ログインしていないとコメントできない" do
-      @review = create(:review)
-      visit review_path(@review)
-      expect(current_path).to eq guests_guidance_path
+  describe 'コメント削除機能' do
+    before do
+      @user2 = create(:user)
+      @comment = create(:comment)
+
+    end
+    context "コメントを削除できる時" do
+      it "コメント主はコメントを削除できる" do
+        sign_in (@comment.user)
+        visit review_path(@comment.review)
+        expect{
+          find_link('削除', href: comment_path(@comment)).click
+        }.to change { Comment.count }.by(-1)
+        expect(page).to have_content 'コメントを削除しました'
+        expect(page).to have_no_content("#{@comment.body}")
+      end
+      it "管理者はコメントを削除できる" do
+        sign_in @admin
+      end
+    end
+    
+    const "コメントを削除できない時" do
+      it "他のユーザーのコメントは削除できない" do
+        
+      end
     end
   end
 end
