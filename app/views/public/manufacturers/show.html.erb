@@ -3,23 +3,12 @@
   <table class="table">
     <tr>
       <th></th>
+      <th>メーカー</th>
       <th>車種名</th>
       <th>価格</th>
     </tr>
     <% @manufacturer.models.each do |model| %>
-      <tr>
-        <td>
-          <%= link_to model_path(model) do %>
-            <%= image_tag model.get_model_image(80,80) %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to model_path(model) do %>
-            <%= model.name %>
-          <% end %>
-        </td>
-        <td><%= model.price %>円</td>
-      </tr>
+      <%= render "public/shared/manufacturer_show", model: model %>
     <% end %>
   </table>
 </div>

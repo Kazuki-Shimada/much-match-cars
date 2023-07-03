@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    <%= link_to model_path(model) do %>
+      <%= image_tag model.get_model_image(80,80) %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to manufacturer_path(model.manufacturer) do %>
+      <%= model.manufacturer.name %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to model_path(model) do %>
+      <%= model.name %>
+    <% end %>
+  </td>
+  <td><%= model.price %>円</td>
+</tr>
