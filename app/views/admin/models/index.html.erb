@@ -25,11 +25,11 @@
         </td>
       </tr>
       <tr>
-        <th>価格</th>
-        <td><%= f.text_field :price %>円</td>
+        <th>価格（任意）</th>
+        <td><%= f.text_field :price %>　円</td>
       </tr>
       <tr>
-        <th>タグ</th>
+        <th>タグ（任意）</th>
         <td class="row">
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
           <div class='form-check'>
@@ -72,6 +72,7 @@
           <th><%= image_tag model.get_model_image(100,100) %></th>
           <th><%= model.manufacturer.name %></th>
           <th><%= model.name %></th>
+          <th><%= model.price %>　円</th>
           <td>
             <%= link_to "削除", admin_model_path(model.id), method: :delete, class: "btn btn-danger" %>
           </td>

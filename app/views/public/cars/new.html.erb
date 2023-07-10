@@ -19,11 +19,11 @@
         <td id="car_type_type"  style="display:none"><%= f.select :type_id, options_from_collection_for_select(Type.all, :id, :name), class: "form-control" %></td>
       </tr>
       <tr>
-        <th>年式(西暦)</th>
-        <td><%= f.text_field :model_year %></td>
+        <th>年式（西暦）</th>
+        <td><%= f.text_field :model_year %>　年</td>
       </tr>
       <tr>
-        <th>画像</th>
+        <th>画像（任意）</th>
         <td><%= f.file_field :car_image, accept: "image/*" %></td>
       </tr>
       <tr>
