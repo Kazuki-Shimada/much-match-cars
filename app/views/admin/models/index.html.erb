@@ -8,6 +8,7 @@
   </ul>
 <% end %>
 <div class="container text-center">
+  <!--車種新規登録部分-->
   <%= form_with model: @model, url: admin_models_path do |f| %>
     <table class="table table-borderless mt-5">
       <tr>
@@ -55,6 +56,7 @@
       </tr>
     </table>
   <% end %>
+  <!--タグ検索部分-->
   <%= form_tag admin_models_path, method: :get, class: 'boards__searchForm' do %>
     <div class="row">
       <% @tags.each do |tag| %>
@@ -66,6 +68,7 @@
         <%= link_to "全ての車種", admin_models_path %>
       </div>
     </div>
+    <!--車種一覧部分-->
     <table class="table table-borderless mt-5">
       <% @models.each do |model| %>
         <tr>

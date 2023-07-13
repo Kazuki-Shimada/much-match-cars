@@ -3,6 +3,7 @@
   <%= flash[:danger] %>
 </div>
 <div class="container text-center">
+  <!--メーカー新規登録-->
   <%= form_with model: @manufacturer, url: admin_manufacturers_path do |f| %>
     <table class="table table-borderless mt-5">
       <tr>
@@ -19,7 +20,7 @@
       </tr>
     </table>
   <% end %>
-
+<!--メーカー一覧-->
   <table class="table table-borderless mt-5">
     <% @manufacturers.each do |manufacturer| %>
       <tr>
