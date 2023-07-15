@@ -9,7 +9,7 @@
             <%= type.name %>
           <% end %>
         </th>
-        <td><%= type.price %> 円</td>
+        <td>¥ <%= type.price.to_s(:delimited) %></td>
       </tr>
     <% end %>
   </table>

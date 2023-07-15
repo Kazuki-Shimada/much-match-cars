@@ -10,16 +10,18 @@
           <%= image_tag review.user.get_profile_image(80,80), class: "mt-3 rounded-circle" %>
           <%= review.user.name %></br>
         <% end %>
+        <!--ユーザーログイン後のいいね-->
         <% if user_signed_in? %>
           <% if review.gooded_by?(current_user) %>
-            <%= link_to review_goods_path(review), id: "good", method: :delete do %>
+            <%= button_to review_goods_path(review), id: "good", method: :delete do %>
               🤍<%= review.goods.count %>
-            <% end %>いいね
+            <% end %>
           <% else %>
-            <%= link_to review_goods_path(review),id: "nogood", method: :post do %>
+            <%= button_to review_goods_path(review),id: "nogood", method: :post do %>
               ♡<%= review.goods.count %>
-            <% end %>いいね
+            <% end %>
           <% end %>
+          <!--ログイン前のいいね-->
         <% else %>
           ♡<%= review.goods.count %>いいね
         <% end %></br>
@@ -27,7 +29,7 @@
           <%= review.comments.count %>コメント</br>
         <% end %>
         <% if current_user == review.user %>
-          <%= link_to "削除", review_path(review), method: :delete, class: "btn btn-danger" %>
+          <%= button_to "削除", review_path(review), method: :delete, class: "btn btn-danger" %>
         <% end %>
       </div>
       <div class="col-md-6">
