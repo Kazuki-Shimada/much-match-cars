@@ -166,7 +166,7 @@ RSpec.describe 'Reviews', type: :system do
         sign_in(@review1.user)
         visit root_path
         expect{
-          find_link('削除', href: review_path(@review1)).click
+          find_button('削除').click
         }.to change { Review.count }.by(-1)
         expect(page).to have_content '投稿を削除しました'
         expect(page).to have_no_content("#{@review1.title}")
