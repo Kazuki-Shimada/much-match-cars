@@ -2,6 +2,11 @@
 <div class="container text-center">
   <%= image_tag @model.get_model_image(200,200) %>
   <table class="table">
+    <tr>
+      <th></th>
+      <th>価格</th>
+      <th>レビュー数</th>
+    </tr>
     <% @model.types.each do |type| %>
       <tr>
         <th>
@@ -10,6 +15,7 @@
           <% end %>
         </th>
         <td>¥ <%= type.price.to_s(:delimited) %></td>
+        <td><%= type.reviews.count %></td>
       </tr>
     <% end %>
   </table>

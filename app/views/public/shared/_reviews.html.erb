@@ -11,7 +11,7 @@
           <%= review.user.name %></br>
         <% end %>
         <!--ユーザーログイン後のいいね-->
-        <% if admin_signed_in? %>
+        <% if user_signed_in? %>
           <% if review.gooded_by?(current_user) %>
             <%= button_to review_goods_path(review), id: "good", method: :delete do %>
               🤍<%= review.goods.count %>
