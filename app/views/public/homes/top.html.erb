@@ -7,7 +7,7 @@
   <%= render "public/shared/reviews", review: review %>
 <% end %>
 <div class="container text-center mb-5">
-  <%= link_to "レビューする", new_review_path, class: "btn btn-primary mt-5 textalign-senter" %>
+  <%= link_to "レビューする", new_review_path, class: "btn btn-primary mt-5" %>
 </div>
 <%= paginate @reviews %>
 <%= render "public/shared/arrow" %>
