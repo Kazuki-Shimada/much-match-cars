@@ -29,7 +29,7 @@
           <%= review.comments.count %>コメント</br>
         <% end %>
         <% if current_user == review.user %>
-          <%= button_to "削除", review_path(review), method: :delete, class: "btn btn-danger" %>
+          <%= button_to "削除", review_path(review), method: :delete, class: "btn btn-danger textalign-senter" %>
         <% end %>
       </div>
       <div class="col-md-6">
