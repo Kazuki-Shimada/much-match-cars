@@ -43,3 +43,36 @@ button {
 #good, #nogood {
   text-decoration: underline;
 }
+
+// top_slide
+.slide_box {
+  margin: 0 auto;
+  border: 1px solid #000000;
+  width: 400px;
+}
+
+.slide_box .slide_image_box {
+  position: relative;
+  max-width: 100%;
+  text-align: center;
+}
+
+.slide_box .slide_image_box img {
+  vertical-align: top;
+}
+
+.slide_box .slide_image_box .change_btn_right {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  
+  cursor: pointer;
+}
+
+.slide_box .slide_image_box .change_btn_left {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  color: #ffffff;
+  cursor: pointer;
+}
