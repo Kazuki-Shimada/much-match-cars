@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :destroy, :show] do
       resources :comments, only: [:destroy]
     end
-    resources :users, only: [:index, :show, :update]
+
     resources :manufacturers, only: [:index, :edit, :create, :destroy]
     resources :models, only: [:index, :edit, :create, :destroy]
     resources :types, only: [:new, :edit, :index, :create, :update, :destroy] do
