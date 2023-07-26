@@ -26,6 +26,8 @@
   const next = document.querySelector('.change_btn_right');
   const prev = document.querySelector('.change_btn_left');
 
+  next.addEventListener('click', function () {
+  slideCount++;
 
   if (slideCount < images.length) {
   document.getElementById('slide_image').src = images[slideCount];

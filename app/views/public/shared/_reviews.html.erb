@@ -27,7 +27,12 @@
         <% end %></br>
         <%= link_to review_path(review) do %>
           <%= review.comments.count %>コメント</br>
-      
+        <% end %>
+        <% if current_user == review.user %>
+          <%= button_to "削除", review_path(review), method: :delete, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+      <div class="col-md-6">
         <div class="card-body">
           <h3>
             <%= link_to manufacturer_path(review.type.model.manufacturer), class: "text-decoration-none" do %>
