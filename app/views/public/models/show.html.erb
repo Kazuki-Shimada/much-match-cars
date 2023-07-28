@@ -3,7 +3,10 @@
   <%= image_tag @model.get_model_image(200,200) %>
   <table class="table">
     <tr>
-
+      <th></th>
+      <th>価格</th>
+      <th>レビュー数</th>
+    </tr>
     <% @model.types.each do |type| %>
       <tr>
         <th>
