@@ -3,6 +3,12 @@
   <table class="table table-hover table-inverse">
     <% if @range == "ユーザー" %>
       <tbody>
+        <tr>
+          <td></td>
+          <td>ユーザー名</td>
+          <td>ステータスメッセージ</td>
+          <td>レビュー数</td>
+        </tr>
         <% @users.each do |user| %>
           <tr>
             <td>
@@ -16,6 +22,7 @@
             <td>
               <%= user.introduct %>
             </td>
+            <td><%= user.reviews.count %></td>
           </tr>
         <% end %>
       </tbody>
