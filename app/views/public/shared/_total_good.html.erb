@@ -1,0 +1,4 @@
+<% @total_good = 0 %>
+<% user.reviews.each do |review| %>
+  <% @total_good += review.goods.count %>
+<% end %>
