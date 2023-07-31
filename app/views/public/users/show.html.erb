@@ -7,11 +7,7 @@
       <%= image_tag @user.get_profile_image(200,200) %>
       <%= render "public/shared/total_good", user: @user %>
       <p class="my-2">レビュー数：<%= @user.reviews.count %></p>
-      <p>いいね数：<%= @total_good %></p>
-    </div>
-    <div class="col-md-8">
-      <p class="text-black-50">ステータスメッセージ</p>
-      <%= @user.introduct %>
+
     </div>
   </div>
   <% if @user == current_user %>
