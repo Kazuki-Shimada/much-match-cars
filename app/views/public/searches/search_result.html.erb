@@ -9,15 +9,13 @@
           <td>ステータスメッセージ</td>
           <td>レビュー数</td>
         </tr>
-        <% @users.each do |user| %>
-          <tr>
+fsゔぁｚｆｄｃｚ
             <td>
-              <%= image_tag user.get_profile_image(100,100) %>
+              <%= user.introduct %>
             </td>
-            <td>
-              <%= link_to user_path(user) do %>
-                <%= user.name %>
-avfdpoczj;m
+            <td><%= user.reviews.count %></td>
+          </tr>
+        <% end %>
       </tbody>
     <% elsif @range == "メーカー" %>
       <tbody>
