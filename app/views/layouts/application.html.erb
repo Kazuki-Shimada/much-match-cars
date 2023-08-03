@@ -32,7 +32,10 @@
               <li class="nav-item px-4 mx-2 rounded border btn btn-danger">
                 <%= link_to "トップ", homes_top_path, class: 'nav-link text-white' %>
               </li>
-dacxa
+              <li class="nav-item px-3 mx-2 rounded border btn btn-danger">
+                <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item px-2 mx-2 rounded border btn btn-danger">
                 <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item px-3 mx-2 rounded border btn btn-danger">

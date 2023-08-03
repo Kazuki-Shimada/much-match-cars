@@ -9,7 +9,12 @@
 <h2 class="mx-5 mt-5">新着レビュー</h2>
 <div class="text-center text-success">
   <%= flash[:success] %>
-dvawcxaxa
+  <%= flash[:deleted] %>
+</div>
+<% @reviews.each do |review| %>
+  <%= render "public/shared/reviews", review: review %>
+<% end %>
+<div class="container text-center mb-5">
   <%= link_to "レビューする", new_review_path, class: "btn btn-primary mt-5" %>
 </div>
 <%= paginate @reviews %>
