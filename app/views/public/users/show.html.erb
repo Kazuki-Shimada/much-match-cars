@@ -6,11 +6,20 @@
     <div class="col-md-4">
       <%= image_tag @user.get_profile_image(200,200) %>
       <%= render "public/shared/total_good", user: @user %>
-      <p class="my-2">レビュー数：<%= @user.reviews.count %></p>
+      <p class="my-2">レビュー数：<%= @user.reviews.size %></p>
       <p>いいね数：<%= @total_good %></p>
     </div>
-    <div class=""></div>
-    <div class="col-md-8">
+    <div class="col-md-3 user-achievement">
+      <div class="total-review mr-2">
+        <h3><%= @user.reviews.size %></h3></br>
+        <p>レビュー数</p>
+      </div>
+      <div class="total-review ml-2">
+        <h3><%= @total_good %></h3></br>
+        <p>いいね数</p>
+      </div>
+    </div>
+    <div class="col-md-5">
       <p class="text-black-50">ステータスメッセージ</p>
       <%= @user.introduct %>
     </div>

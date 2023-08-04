@@ -30,7 +30,8 @@ body {
 }
 
 .arrow {
-o;ibuefhzvjd;cok
+  margin: 20px;
+  text-align: end;
 }
 
 table {
@@ -45,6 +46,12 @@ button {
 
 #good, #nogood {
   text-decoration: underline;
+}
+
+.user-achievement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 // top_slide
