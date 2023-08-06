@@ -18,6 +18,12 @@ class Public::ReviewsController < ApplicationController
     else
       render :new
     end
+    if @review.save
+      flash[:success] = "投稿が成功しました"
+      redirect_to root_path
+    else
+      render :new
+    end
   end
   def destroy
     @review = Review.find(params[:id])

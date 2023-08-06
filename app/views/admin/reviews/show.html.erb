@@ -52,19 +52,30 @@
         </div>
     </div>
     <div class="col-md-3">
-      <table class="table table-borderless">
-        <tr>
-          <td>デザイン</td>
-          <td> <%= @review.design %>/5</td>
+<tr>
+          <td>広さ</td>
+          <td><%= @review.size %>/5</td>
         </tr>
         <tr>
-          <td>運転性能</td>
-          <td><%= @review.driving_performance %>/5</td>
+          <td>安全性能</td>
+          <td><%= @review.safety %>/5</td>
         </tr>
         <tr>
-          <td>価格</td>
-          <td><%= @review.cost %>/5</td>
+          <th>総合点数</th>
+          <th><%= @review.rate %>/5</th>
         </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <strong>最近のコメント</strong></br>
+  <div class="text-left">
+    <% @review.comments.each do |comment| %>
+    <div class="my-3 row">
+      <div class="col-md-3">
+        <%= image_tag comment.user.get_profile_image(100,100)%>
+      </div>
         <tr>
           <td>広さ</td>
           <td><%= @review.size %>/5</td>
